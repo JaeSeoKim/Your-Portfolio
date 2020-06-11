@@ -1,0 +1,44 @@
+{
+  "name": "simple-type-next-express-boilerplate",
+  "description": "Simple TypeScript + Next.js + Custom Express Server Boilerplate",
+  "author": "JaeSeoKim",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon --exec ts-node --project tsconfig.server.json server/server.ts",
+    "dev:api": "nodemon --exec ts-node --project tsconfig.server.json server/server-dev-api.ts",
+    "build": "next build && tsc --project tsconfig.server.json",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write **/*.{js,ts,tsx}"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/register": "^7.10.1",
+    "autoprefixer": "^9.8.0",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
+    "swr": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.6",
+    "@types/node": "^14.0.13",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "prettier": "^2.0.2",
+    "typescript": "^3.9.5",
+    "tailwindcss": "^1.4.6",
+    "postcss-preset-env": "^6.7.0"
+  }
+}
