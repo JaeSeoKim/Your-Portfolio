@@ -27,8 +27,8 @@ const ToggleButton: React.FunctionComponent<Props> = ({
         <div
           className={
             checked
-              ? "bg-gray-700 hover:bg-white text-white hover:text-gray-700 text-xs px-3 py-2 rounded-full shadow-md"
-              : "bg-white hover:bg-gray-700 text-gray-700 hover:text-white text-xs px-3 py-2 rounded-full shadow-md"
+              ? "bg-gray-700 hover:bg-white text-white hover:text-gray-700 text-xs px-2 md:px-3 py-2 rounded-full shadow-md cursor-pointer"
+              : "bg-white hover:bg-gray-700 text-gray-700 hover:text-white text-xs px-2 md:px-3 py-2 rounded-full shadow-md cursor-pointer"
           }
         >
           {checked ? (
@@ -39,7 +39,7 @@ const ToggleButton: React.FunctionComponent<Props> = ({
           ) : (
             <div className={"flex content-end"}>
               <FiMoon className="fill-current text-yellow-400 inline-block h-4 w-4 mr-0 md:mr-1" />
-              <span className="hidden md:block">라이트 모드로 보기</span>
+              <span className="hidden md:block">다크 모드로 보기</span>
             </div>
           )}
         </div>
@@ -47,8 +47,8 @@ const ToggleButton: React.FunctionComponent<Props> = ({
       <div
         className={
           checked
-            ? "bg-gray-700 hover:bg-white text-white hover:text-gray-700 p-2 my-auto ml-2 rounded-full shadow-md"
-            : "bg-white hover:bg-gray-700 text-gray-700 hover:text-white p-2 my-auto ml-2 rounded-full shadow-md"
+            ? "bg-gray-700 hover:bg-white text-white hover:text-gray-700 p-2 my-auto ml-2 rounded-full shadow-md cursor-pointer"
+            : "bg-white hover:bg-gray-700 text-gray-700 hover:text-white p-2 my-auto ml-2 rounded-full shadow-md cursor-pointer"
         }
         onClick={() => {
           window.scrollTo({ top: 0, behavior: "smooth" })

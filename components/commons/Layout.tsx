@@ -4,9 +4,11 @@ import ThemeContext from "lib/context/ThemContext"
 import ToggleButton from "./ToggleButton"
 import Footer from "./Footer"
 
-type Props = {}
+type Props = {
+  user?: string
+}
 
-const Layout: React.FunctionComponent<Props> = ({ children }) => {
+const Layout: React.FunctionComponent<Props> = ({ children, user }) => {
   const [isDarkMode, setDarkMode] = useState<boolean>(false)
 
   const toggleThemMode = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,8 +37,12 @@ const Layout: React.FunctionComponent<Props> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleThemMode }}>
-      <div className={isDarkMode ? "bg-gray-800" : "bg-gray-300"}>
-        <Nav />
+      <div
+        style={
+          isDarkMode ? { background: "#272C35" } : { background: "#E2E8F0" }
+        }
+      >
+        <Nav user={user} />
         <div className={"container min-h-screen mx-auto p-6 "}>
           {children}
           <ToggleButton

@@ -2,12 +2,16 @@ import React, { useContext } from "react"
 import Link from "next/link"
 import { whiteModeColor, darkModeColor } from "../../lib/utils/constans"
 import ThemeContext from "../../lib/context/ThemContext"
-import ToggleButton from "./ToggleButton"
+import LoginButton from "./LoginButton"
+import LoggedButton from "./LoggedButton"
 
-type Props = {}
+type Props = {
+  user?: string
+}
 
-const Nav: React.FunctionComponent<Props> = ({}) => {
-  const { isDarkMode, toggleThemMode } = useContext(ThemeContext)
+const Nav: React.FunctionComponent<Props> = ({ user }) => {
+  const { isDarkMode } = useContext(ThemeContext)
+  console.log(user, typeof user)
   return (
     <nav
       style={
@@ -57,14 +61,23 @@ const Nav: React.FunctionComponent<Props> = ({}) => {
           className="hidden w-full block flex-grow mt-auto lg:flex lg:items-center lg:w-auto "
         >
           <div className="text-sm lg:flex-grow mt-auto">
-            <Link href="/#Profile">
+            <Link href="/">
               <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
-                Profile
+                Home
+              </a>
+            </Link>
+            <Link href="/about">
+              <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                About
               </a>
             </Link>
           </div>
           <div>
-            {/* <ToggleButton onChange={toggleThemMode} checked={isDarkMode} /> */}
+            {user ? (
+              <LoggedButton className={"flex justify-end"} user={user} />
+            ) : (
+              <LoginButton className={"flex justify-end"} />
+            )}
           </div>
         </div>
       </div>

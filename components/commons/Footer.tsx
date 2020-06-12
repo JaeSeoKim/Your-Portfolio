@@ -6,10 +6,7 @@ type Props = {}
 const Footer: React.FunctionComponent<Props> = () => {
   const { isDarkMode } = useContext(ThemeContext)
   return (
-    <div
-      style={isDarkMode ? { background: "#282c35" } : { background: "#e2e8f0" }}
-      className={"flex justify-center"}
-    >
+    <div className={"flex justify-center"}>
       <div className="p-6">
         <a
           href={"https://github.com/JaeSeoKim"}
