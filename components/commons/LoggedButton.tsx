@@ -19,7 +19,7 @@ const LoggedButton: React.FunctionComponent<Props> = ({
           "inline-block flex text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-gray-300 mt-4 lg:mt-0 select-none cursor-pointer"
         }
       >
-        <Link href={"/profile/[user]"} as={`/profile/${user}`}>
+        <Link href={"/profile/[user]"} as={`/profile/${user}`} shallow={true}>
           <a className={"hover:text-gray-300"}>{user}</a>
         </Link>
         <div className={"mx-2 select-none"}>|</div>

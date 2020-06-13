@@ -59,16 +59,6 @@ passport.use(
   )
 )
 
-// passport.serializeUser<any, any>((user, done) => {
-//   done(undefined, user.id)
-// })
-
-// passport.deserializeUser((id, done) => {
-//   User.findById(id, (err, user) => {
-//     done(err, user)
-//   })
-// })
-
 // @ts-ignore
 passport.serializeUser(User.serializeUser())
 // @ts-ignore

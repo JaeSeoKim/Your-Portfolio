@@ -9,6 +9,8 @@ import flash from "express-flash"
 import passport from "passport"
 import apiRoutes from "./routes/apiRoutes"
 import authRoutes from "./routes/authRoutes"
+import query from "qs-middleware"
+import { server as apolloServer } from "./apollo"
 import "./db"
 import "./models/User"
 import "./passport"
@@ -55,6 +57,11 @@ app.prepare().then(() => {
 
   server.use("/auth", authRoutes)
 
+  // Apollo Graphql Server
+  server.use(query())
+  apolloServer.applyMiddleware({ app: server, path: "/api/graphql" })
+
+  // Rest API
   server.use("/api", apiRoutes)
 
   server.all("*", (req, res) => {

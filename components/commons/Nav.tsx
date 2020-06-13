@@ -11,7 +11,6 @@ type Props = {
 
 const Nav: React.FunctionComponent<Props> = ({ user }) => {
   const { isDarkMode } = useContext(ThemeContext)
-  console.log(user, typeof user)
   return (
     <nav
       style={

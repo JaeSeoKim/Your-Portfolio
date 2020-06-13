@@ -1,4 +1,4 @@
 module.exports = {
-  env: {}
+  env: {},
   // useFileSystemPublicRoutes: false
 }
