@@ -1,6 +1,6 @@
 import React from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { useApollo } from '../apollo/client'
+import { useApollo } from '../lib/apollo/client'
 import Layout from '../components/Layout'
 import '../styles/tailwind.base.css'
 

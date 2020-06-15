@@ -1,12 +1,12 @@
 import { ApolloServer } from 'apollo-server-micro'
-import { schema } from '../../apollo/schema'
+import { schema } from '../../lib/apollo/schema'
 
 const apolloServer = new ApolloServer({
   schema,
   context(ctx) {
     return ctx
-  },
-  playground: false
+  }
+  // playground: false
 })
 
 export const config = {
