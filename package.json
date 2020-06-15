@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier && npm run check"
+      "pre-commit": "npm run prettier && npm run check && git add ."
     }
   },
   "dependencies": {
