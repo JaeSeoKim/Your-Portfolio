@@ -1,8 +1,7 @@
 import passport from 'passport'
 import nextConnect from 'next-connect'
-import { localStrategy } from '../../lib/password-local'
-import { encryptSession } from '../../lib/iron'
-import { setTokenCookie } from '../../lib/auth-cookies'
+import { setLoginSession } from '../../lib/auth/iron'
+import { strategy } from '../../lib/auth/passport-github'
 
 const authenticate = (method, req, res) =>
   new Promise((resolve, reject) => {
@@ -15,20 +14,19 @@ const authenticate = (method, req, res) =>
     })(req, res)
   })
 
-passport.use(localStrategy)
+passport.use(strategy)
 
 export default nextConnect()
   .use(passport.initialize())
-  .post(async (req, res) => {
+  .get(async (req, res) => {
     try {
-      const user = await authenticate('local', req, res)
+      const user = await authenticate('github', req, res)
       // session is the payload to save in the token, it may contain basic info about the user
-      const session = { ...user }
+      const session = user
       // The token is a string with the encrypted session
-      const token = await encryptSession(session)
-
-      setTokenCookie(res, token)
-      res.status(200).send({ done: true })
+      await setLoginSession(res, session)
+      res.writeHead(302, { Location: '/' })
+      res.end()
     } catch (error) {
       console.error(error)
       res.status(401).send(error.message)
