@@ -7,6 +7,11 @@
     "prettier": "prettier --write .",
     "check": "prettier --check '*/**/*.js'"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier && npm run check"
+    }
+  },
   "dependencies": {
     "@apollo/react-common": "^3.1.4",
     "@apollo/react-hooks": "^3.1.5",
@@ -33,6 +38,7 @@
     "swr": "0.1.16"
   },
   "devDependencies": {
+    "husky": "^4.2.5",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
     "prettier-config-standard": "^1.0.1",
