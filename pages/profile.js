@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import ThemeContext from '../../lib/context/ThemContext'
-import Profile from '../../components/profile/Profile'
+import ThemeContext from '../lib/context/ThemContext'
+import Profile from '../components/profile/Profile'
 
 const profileQuery = gql`
   query {
@@ -35,7 +35,6 @@ const profile = () => {
 
   return (
     <div className={'container'}>
-      <h1 className={'text-3xl'}>Profile</h1>
       <Profile profileData={profile} className={'w-full'} />
     </div>
   )

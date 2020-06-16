@@ -6,6 +6,7 @@ import '../styles/tailwind.base.css'
 
 const app = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState)
+
   return (
     <ApolloProvider client={apolloClient}>
       <Layout>
