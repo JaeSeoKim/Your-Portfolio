@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import gql from 'graphql-tag'
+import Router from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
@@ -26,6 +27,12 @@ const profile = () => {
   const profile = data?.profile
 
   if (error) {
+    if (
+      String(error) ===
+      'Error: GraphQL error: Authentication token is invalid, please log in'
+    ) {
+      Router.push('/')
+    }
     return <div>error</div>
   }
 

@@ -4,14 +4,7 @@ import Link from 'next/link'
 const home = () => {
   return (
     <div>
-      <h1>Home</h1>
-      <Link href="/[id]" as="/jaeseo">
-        <a>user - jaeseo</a>
-      </Link>
-      <br />
-      <Link href="/[id]" as="/unknown">
-        <a>user - unknown?</a>
-      </Link>
+      <h1 className={'text-3xl'}>Home</h1>
     </div>
   )
 }

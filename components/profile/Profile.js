@@ -106,7 +106,7 @@ const Profile = ({ profileData, style, className }) => {
             : 'text-gray-700 max-w-2xl mx-auto'
         }>
         <div>
-          <Anchor tag={'GitHud Contributions'} />
+          <Anchor tag={'GitHub Contributions'} />
           <GitContributions
             className={'pt-3'}
             githubId={profileData.username}
