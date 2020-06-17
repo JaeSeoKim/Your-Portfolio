@@ -15,8 +15,8 @@ const ToggleButton = ({ onChange, style, className, checked = false }) => {
         <div
           className={
             checked
-              ? 'bg-gray-700 hover:bg-white text-white hover:text-gray-700 text-xs px-2 md:px-3 py-2 rounded-full shadow-md cursor-pointer'
-              : 'bg-white hover:bg-gray-700 text-gray-700 hover:text-white text-xs px-2 md:px-3 py-2 rounded-full shadow-md cursor-pointer'
+              ? 'transform transition duration-150 ease-in-out hover:scale-105 bg-gray-700 hover:bg-white text-white hover:text-gray-700 text-xs px-2 md:px-3 py-2 rounded-full shadow-md cursor-pointer'
+              : 'transform transition duration-150 ease-in-out hover:scale-105 bg-white hover:bg-gray-700 text-gray-700 hover:text-white text-xs px-2 md:px-3 py-2 rounded-full shadow-md cursor-pointer'
           }>
           {checked ? (
             <div className={'flex content-end'}>
@@ -34,8 +34,8 @@ const ToggleButton = ({ onChange, style, className, checked = false }) => {
       <div
         className={
           checked
-            ? 'bg-gray-700 hover:bg-white text-white hover:text-gray-700 p-2 my-auto ml-2 rounded-full shadow-md cursor-pointer'
-            : 'bg-white hover:bg-gray-700 text-gray-700 hover:text-white p-2 my-auto ml-2 rounded-full shadow-md cursor-pointer'
+            ? 'transform transition duration-150 ease-in-out hover:scale-105 bg-gray-700 hover:bg-white text-white hover:text-gray-700 p-2 my-auto ml-2 rounded-full shadow-md cursor-pointer'
+            : 'transform transition duration-150 ease-in-out hover:scale-105 bg-white hover:bg-gray-700 text-gray-700 hover:text-white p-2 my-auto ml-2 rounded-full shadow-md cursor-pointer'
         }
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' })

@@ -6,14 +6,14 @@ const LoggedButton = ({ style, className, user }) => {
     <div className={className} style={style}>
       <div
         className={
-          'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none cursor-pointer'
+          'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none'
         }>
         <Link href={'/profile'} as={`/profile`}>
-          <a className={'hover:text-gray-300'}>{user}</a>
+          <a className={'hover:text-gray-300 cursor-pointer'}>{user}</a>
         </Link>
         <div className={'mx-2 select-none'}>|</div>
         <Link href="/api/logout">
-          <a className={'hover:text-gray-300'}>Logout</a>
+          <a className={'hover:text-gray-300 cursor-pointer'}>Logout</a>
         </Link>
       </div>
     </div>

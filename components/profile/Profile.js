@@ -5,6 +5,8 @@ import PhotoFrame from './PhotoFrame'
 import Divder from '../commons/Divder'
 import GitContributions from './GitContributions'
 import Anchor from '../commons/Anchor'
+import { RiFileEditLine } from 'react-icons/ri'
+import Button from '../commons/Button'
 
 const Profile = ({ profileData, style, className }) => {
   const { isDarkMode } = useContext(ThemeContext)
@@ -22,21 +24,36 @@ const Profile = ({ profileData, style, className }) => {
 
   return (
     <div style={style} className={className}>
+      <div className={'relative'}>
+        <Button
+          className={'absolute right-0 select-none'}
+          href={'/profile/edit'}
+          value={
+            <div className={'flex justify-center'}>
+              <RiFileEditLine
+                className={'fill-current inline-block h-4 w-4 mt-auto mr-1'}
+              />
+              Edit Profile
+            </div>
+          }
+        />
+      </div>
       <div id="Profile" className="flex justify-center">
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col w-full md:flex-row md:w-auto break-all">
           <PhotoFrame
             rounding
             img={profileData.avatarUrl}
-            className="my-auto mx-auto"
-          />
+            className="my-auto mx-auto"></PhotoFrame>
           <div
             className={
               isDarkMode
-                ? 'flex flex-col lg:my-6 max-w-2xl text-white'
-                : 'flex flex-col lg:my-6 max-w-2xl text-gray-700'
+                ? 'flex flex-col mx-auto lg:my-6 max-w-xl md:max-w-md lg:max-w-2xl text-white'
+                : 'flex flex-col mx-auto lg:my-6 max-w-xl md:max-w-md lg:max-w-2xl text-gray-700'
             }>
             <h1 className="text-3xl font-bold lg:text-4xl text-center">
-              <a data-tip="GitHub ID!">{profileData.username}</a>
+              <a data-tip={'GitHub ID!'} data-for={'githubID'}>
+                {profileData.username}
+              </a>
               <ReactTooltip
                 type={isDarkMode ? 'dark' : 'light'}
                 effect={'solid'}
@@ -62,7 +79,7 @@ const Profile = ({ profileData, style, className }) => {
                   <span className={'font-bold'}>GitHub Link</span>:{' '}
                   {profileData.profileUrl}
                 </a>
-                {profileData.email && (
+                {profileData.blog && (
                   <div>
                     <br />
                     <a
@@ -102,8 +119,8 @@ const Profile = ({ profileData, style, className }) => {
       <div
         className={
           isDarkMode
-            ? 'text-white max-w-2xl mx-auto'
-            : 'text-gray-700 max-w-2xl mx-auto'
+            ? 'text-white max-w-5xl mx-auto'
+            : 'text-gray-700 max-w-5xl mx-auto'
         }>
         <div>
           <Anchor tag={'GitHub Contributions'} />

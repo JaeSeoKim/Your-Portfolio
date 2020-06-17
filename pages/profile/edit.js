@@ -42,8 +42,7 @@ const profile = () => {
 
   return (
     <div className={'container'}>
-      <ProfileEdit />
-      {/* <Profile profileData={profile} className={'w-full'} /> */}
+      <ProfileEdit className={''} />
     </div>
   )
 }
