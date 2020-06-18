@@ -22,13 +22,18 @@ export default nextConnect()
     try {
       const user = await authenticate('github', req, res)
       // session is the payload to save in the token, it may contain basic info about the user
-      const session = user
+      const session = {
+        id: user.id,
+        username: user.username
+      }
       // The token is a string with the encrypted session
       await setLoginSession(res, session)
       res.writeHead(302, { Location: '/' })
       res.end()
     } catch (error) {
       console.error(error)
-      res.status(401).send(error.message)
+      res.writeHead(302, { Location: '/' })
+      res.end()
+      // res.status(401).send(error.message)
     }
   })

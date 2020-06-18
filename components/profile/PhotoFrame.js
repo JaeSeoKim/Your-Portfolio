@@ -6,13 +6,15 @@ const PhotoFrame = ({
   className,
   rounding,
   alt = 'userImg',
-  children
+  children,
+  onError = () => {}
 }) => {
   return (
     <div style={style} className={className}>
       <img
         src={img}
         onError={e => {
+          onError()
           e.target.src = '/profile.svg'
         }}
         alt={alt}

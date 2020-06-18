@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Router from 'next/router'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../../lib/context/ThemContext'
@@ -42,7 +43,7 @@ const profile = () => {
 
   return (
     <div className={'container'}>
-      <ProfileEdit className={''} />
+      <ProfileEdit profileData={profile} className={'w-full'} />
     </div>
   )
 }

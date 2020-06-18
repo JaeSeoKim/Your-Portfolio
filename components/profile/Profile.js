@@ -47,8 +47,8 @@ const Profile = ({ profileData, style, className }) => {
           <div
             className={
               isDarkMode
-                ? 'flex flex-col mx-auto lg:my-6 max-w-xl md:max-w-md lg:max-w-2xl text-white'
-                : 'flex flex-col mx-auto lg:my-6 max-w-xl md:max-w-md lg:max-w-2xl text-gray-700'
+                ? 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md lg:max-w-2xl text-white'
+                : 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md lg:max-w-2xl text-gray-700'
             }>
             <h1 className="text-3xl font-bold lg:text-4xl text-center">
               <a data-tip={'GitHub ID!'} data-for={'githubID'}>
