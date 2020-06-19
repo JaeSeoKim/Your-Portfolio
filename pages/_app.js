@@ -3,6 +3,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import { useApollo } from '../lib/apollo/client'
 import Layout from '../components/Layout'
 import '../styles/tailwind.base.css'
+import 'react-multi-carousel/lib/styles.css'
 
 const app = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState)

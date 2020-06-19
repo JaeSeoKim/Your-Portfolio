@@ -38,6 +38,7 @@
     "react-dom": "latest",
     "react-github-heatmap": "^1.0.4",
     "react-icons": "^3.10.0",
+    "react-multi-carousel": "^2.5.5",
     "react-tooltip": "^4.2.7",
     "swr": "0.1.16"
   },
