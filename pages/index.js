@@ -53,7 +53,7 @@ const home = () => {
   )
 }
 
-export async function getServerSideProps() {
+home.getInitialProps = async ctx => {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({
@@ -61,9 +61,7 @@ export async function getServerSideProps() {
   })
 
   return {
-    props: {
-      initialApolloState: apolloClient.cache.extract()
-    }
+    initialApolloState: apolloClient.cache.extract()
   }
 }
 
