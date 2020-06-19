@@ -23,13 +23,15 @@ const ProfileCard = ({ style, className, href, as, data }) => {
             className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
             src={data.avatarUrl}
           />
-          <div class="text-center md:text-left">
-            <h2 class="inline text-lg">{data.username} </h2>
-            <span class="text-purple-500">{data.displayName}</span>
-            <div class="text-gray-600">{data.email}</div>
-            <div class="text-gray-600">{data.profileUrl}</div>
-            <div class="text-gray-600">{data.blog}</div>
-            <div class="text-gray-600">{data.bio.substring(0, 100)}...</div>
+          <div className="text-center md:text-left">
+            <h2 className="inline text-lg">{data.username} </h2>
+            <span className="text-purple-500">{data.displayName}</span>
+            <div className="text-gray-600">{data.email}</div>
+            <div className="text-gray-600">{data.profileUrl}</div>
+            <div className="text-gray-600">{data.blog}</div>
+            <div className="text-gray-600">
+              {data.bio && data.bio.substring(0, 100)}...
+            </div>
           </div>
         </div>
       </div>
