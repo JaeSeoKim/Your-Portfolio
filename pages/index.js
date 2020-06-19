@@ -54,19 +54,19 @@ const home = () => {
   )
 }
 
-// export async function getStaticProps() {
-//   const apolloClient = initializeApollo()
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
 
-//   await apolloClient.query({
-//     query: usersQuery
-//   })
+  await apolloClient.query({
+    query: usersQuery
+  })
 
-//   return {
-//     props: {
-//       initialApolloState: apolloClient.cache.extract()
-//     },
-//     unstable_revalidate: 1
-//   }
-// }
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract()
+    },
+    unstable_revalidate: 1
+  }
+}
 
 export default home
