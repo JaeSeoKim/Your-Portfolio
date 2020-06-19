@@ -43,7 +43,7 @@ const Profile = ({ profileData, style, className }) => {
           <PhotoFrame
             rounding
             img={profileData.avatarUrl}
-            className="my-auto mx-auto"></PhotoFrame>
+            className="my-auto mx-auto m-5"></PhotoFrame>
           <div
             className={
               isDarkMode
