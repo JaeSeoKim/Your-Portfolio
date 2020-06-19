@@ -34,7 +34,6 @@ const home = () => {
   if (loading) {
     return <div>loding</div>
   }
-  console.log(data)
 
   return (
     <div className={'container'}>
