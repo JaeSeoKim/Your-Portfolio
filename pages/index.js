@@ -18,6 +18,7 @@ const usersQuery = gql`
       email
       blog
       bio
+      tag
     }
   }
 `
@@ -44,7 +45,7 @@ const home = () => {
             <ProfileCard
               key={index}
               data={value}
-              className={'w-full h-full px-2  pb-5'}
+              className={'w-full h-full px-2 pb-5'}
             />
           ))}
         </Dots>

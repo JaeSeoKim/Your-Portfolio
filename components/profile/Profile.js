@@ -47,8 +47,8 @@ const Profile = ({ profileData, style, className }) => {
           <div
             className={
               isDarkMode
-                ? 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md lg:max-w-2xl text-white'
-                : 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md lg:max-w-2xl text-gray-700'
+                ? 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md text-white'
+                : 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md text-gray-700'
             }>
             <h1 className="text-3xl font-bold lg:text-4xl text-center">
               <a data-tip={'GitHub ID!'} data-for={'githubID'}>
@@ -111,6 +111,21 @@ const Profile = ({ profileData, style, className }) => {
                     </a>
                   </div>
                 )}
+                {profileData.tag && (
+                  <div className={'flex flex-wrap'}>
+                    {profileData.tag.map((value, index) => (
+                      <div
+                        key={index}
+                        className={`appearance-none inline-flex w-auto font-normal text-sm ${
+                          isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
+                        } placeholder-gray-600 ${
+                          isDarkMode ? 'text-white' : 'text-gray-700'
+                        } rounded  py-1 px-2 mr-1 mt-2 `}>
+                        {value}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -125,7 +140,7 @@ const Profile = ({ profileData, style, className }) => {
         <div>
           <Anchor tag={'GitHub Contributions'} />
           <GitContributions
-            className={'pt-3'}
+            className={'pt-3 flex justify-center'}
             githubId={profileData.username}
           />
         </div>

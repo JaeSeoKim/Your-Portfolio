@@ -1,7 +1,9 @@
 import React from 'react'
+// import App from 'next/app'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { useApollo } from '../lib/apollo/client'
+import { useApollo, initializeApollo } from '../lib/apollo/client'
 import Layout from '../components/Layout'
+// import { profileQuery } from '../components/commons/Nav'
 import '../styles/tailwind.base.css'
 import 'react-multi-carousel/lib/styles.css'
 
@@ -16,5 +18,16 @@ const app = ({ Component, pageProps }) => {
     </ApolloProvider>
   )
 }
+
+// app.getInitialProps = async appContext => {
+//   const appProps = await App.getInitialProps(appContext)
+//   const apolloClient = initializeApollo()
+
+//   await apolloClient.query({
+//     query: profileQuery
+//   })
+
+//   return { ...appProps, initialApolloState: apolloClient.cache.extract() }
+// }
 
 export default app

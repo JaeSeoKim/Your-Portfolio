@@ -6,6 +6,7 @@ import ThemeContext from '../../lib/context/ThemContext'
 import PhotoFrame from './PhotoFrame'
 import Input from '../commons/Input'
 import TextArea from '../commons/TextArea'
+import TagInput from './TagInput'
 
 const UpdateProfileMutaition = gql`
   mutation UpdateProfileMutaition(
@@ -15,6 +16,7 @@ const UpdateProfileMutaition = gql`
     $email: String!
     $blog: String!
     $bio: String!
+    $tag: [String!]!
   ) {
     updateProfile(
       input: {
@@ -24,6 +26,7 @@ const UpdateProfileMutaition = gql`
         email: $email
         blog: $blog
         bio: $bio
+        tag: $tag
       }
     ) {
       id
@@ -34,6 +37,7 @@ const UpdateProfileMutaition = gql`
       email
       blog
       bio
+      tag
     }
   }
 `
@@ -71,6 +75,9 @@ const ProfileEdit = ({ profileData, style, className }) => {
     setProfile({ ...profile, email: value, typeEmail })
   }
   const handelBlog = value => setProfile({ ...profile, blog: value })
+  const handelTag = value => {
+    setProfile({ ...profile, tag: value })
+  }
   const handelBio = value => setProfile({ ...profile, bio: value })
 
   const handelSubmit = async e => {
@@ -86,7 +93,8 @@ const ProfileEdit = ({ profileData, style, className }) => {
           avatarUrl: profile.avatarUrl,
           email: profile.email,
           blog: profile.blog,
-          bio: profile.bio
+          bio: profile.bio,
+          tag: profile.tag
         }
       })
       Router.push('/profile')
@@ -126,7 +134,7 @@ const ProfileEdit = ({ profileData, style, className }) => {
         />
       </div>
       <div className="flex justify-center">
-        <form className="flex flex-wrap -mx-3 mb-6 w-full max-w-screen-md">
+        <div className="flex flex-wrap -mx-3 mb-6 w-full max-w-screen-md">
           <Input
             className={'w-full md:w-1/2 px-3 mb-6'}
             label={'Display Name'}
@@ -165,6 +173,12 @@ const ProfileEdit = ({ profileData, style, className }) => {
             value={profile.blog}
             isLoading={isLoading}
           />
+          <TagInput
+            className={'w-full px-3 mb-6'}
+            isLoading={isLoading}
+            value={profile.tag}
+            onChange={handelTag}
+          />
           <TextArea
             className={'w-full'}
             label={'Bio'}
@@ -186,7 +200,7 @@ const ProfileEdit = ({ profileData, style, className }) => {
               저장
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   )

@@ -24,14 +24,29 @@ const ProfileCard = ({ style, className, href, as, data }) => {
             src={data.avatarUrl}
           />
           <div className="text-center md:text-left">
-            <h2 className="inline text-lg">{data.username} </h2>
+            <h2 className="md:inline text-lg">{data.username} </h2>
             <span className="text-purple-500">{data.displayName}</span>
-            <div className="text-gray-600">{data.email}</div>
+            {data.tag && (
+              <div className={'flex flex-wrap'}>
+                {data.tag.map((value, index) => (
+                  <div
+                    key={index}
+                    className={`appearance-none inline-flex w-auto font-normal text-sm ${
+                      isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
+                    } placeholder-gray-600 ${
+                      isDarkMode ? 'text-white' : 'text-gray-700'
+                    } rounded  py-1 px-2 mr-1 mt-2 `}>
+                    {value}
+                  </div>
+                ))}
+              </div>
+            )}
+            {/* <div className="text-gray-600">{data.email}</div>
             <div className="text-gray-600">{data.profileUrl}</div>
-            <div className="text-gray-600">{data.blog}</div>
-            <div className="text-gray-600">
+            <div className="text-gray-600">{data.blog}</div> */}
+            <pre className="text-gray-600">
               {data.bio && data.bio.substring(0, 100)}...
-            </div>
+            </pre>
           </div>
         </div>
       </div>

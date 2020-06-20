@@ -7,7 +7,7 @@ import LoggedButton from './LoggedButton'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 
-const profileQuery = gql`
+export const profileQuery = gql`
   query profileQuery {
     profile {
       id

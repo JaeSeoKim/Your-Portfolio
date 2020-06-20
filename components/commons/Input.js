@@ -42,6 +42,7 @@ const Input = ({
             onChange={handelChange}
             value={value}
             disabled={isLoading}
+            // onSubmit={e => event.preventDefault()}
           />
         </label>
         {isLoading && (

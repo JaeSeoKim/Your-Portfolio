@@ -16,6 +16,7 @@ const profileQuery = gql`
       email
       blog
       bio
+      tag
     }
   }
 `
@@ -41,7 +42,7 @@ const profile = () => {
   }
 
   return (
-    <div className={'container'}>
+    <div className={'container max-w-screen-md mx-auto'}>
       <Profile profileData={profile} className={'w-full'} />
     </div>
   )

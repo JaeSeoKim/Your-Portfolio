@@ -63,7 +63,7 @@ const GitContributions = ({ githubId, style, className }) => {
   return (
     <div className={className} style={style}>
       <Heatmap
-        blockSize={18}
+        // blockSize={18}
         data={contributionData}
         theme={
           isDarkMode

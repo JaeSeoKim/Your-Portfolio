@@ -17,6 +17,7 @@ const profileQuery = gql`
       email
       blog
       bio
+      tag
     }
   }
 `
