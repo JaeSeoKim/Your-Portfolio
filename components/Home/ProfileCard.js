@@ -16,7 +16,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
    */
   return (
     <div className={className} style={style}>
-      <div className="w-full h-full lg:max-w-full lg:flex">
+      <div className="w-full h-full md:h-64 lg:max-w-full lg:flex">
         <Link href={'[username]'} as={data.username}>
           <div
             className={`w-full h-full md:flex cursor-pointer ${
@@ -26,14 +26,17 @@ const ProfileCard = ({ style, className, href, as, data }) => {
               className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
               src={data.avatarUrl}
             />
-            <div className="text-center whitespace-pre-wrap md:text-left">
-              <h2 className="md:inline text-lg">{data.username} </h2>
-              <span className="text-purple-500">{data.displayName}</span>
+            <div className="text-center whitespace-pre-wrap md:flex md:flex-col md:justify-between md:scrolling-touch md:overflow-y-auto md:text-left">
+              <div>
+                <h2 className="md:inline text-lg">{data.username} </h2>
+                <span className="text-purple-500">{data.displayName}</span>
+              </div>
               <div
                 className={`text-left mt-4 md:mt-0 ${
                   isDarkMode ? 'text-gray-500' : 'text-gray-700'
                 }`}>
                 {data.bio && data.bio.substring(0, 100).trim()}
+                {'...'}
               </div>
               <div className={''}>
                 {data.tag && (
