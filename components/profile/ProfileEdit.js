@@ -95,7 +95,7 @@ const ProfileEdit = ({ profileData, style, className }) => {
           tag: profile.tag
         }
       })
-      Router.push('/profile')
+      Router.push('/[username]', `/${profileData.username}`)
     } catch (error) {
       console.log('[/profile/edit] submit Error')
       setIsLoading(false)
