@@ -8,6 +8,14 @@ import Anchor from '../commons/Anchor'
 import { RiFileEditLine } from 'react-icons/ri'
 import Button from '../commons/Button'
 
+const checkLink = url => {
+  if (/^(https?|http?):\/\//g.test(url)) {
+    return url
+  } else {
+    return `http://${url}`
+  }
+}
+
 const Profile = ({ profileData, style, className, isEdit }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
@@ -71,7 +79,7 @@ const Profile = ({ profileData, style, className, isEdit }) => {
             <div>
               <div>
                 <a
-                  href={profileData.profileUrl}
+                  href={checkLink(profileData.profileUrl)}
                   target={'_blank'}
                   className={
                     isDarkMode
@@ -85,7 +93,7 @@ const Profile = ({ profileData, style, className, isEdit }) => {
                   <div>
                     <br />
                     <a
-                      href={profileData.blog}
+                      href={checkLink(profileData.blog)}
                       target={'_blank'}
                       className={
                         isDarkMode
