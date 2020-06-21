@@ -30,7 +30,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
               <h2 className="md:inline text-lg">{data.username} </h2>
               <span className="text-purple-500">{data.displayName}</span>
               <pre
-                className={`text-left mt-4 md:mt-0 ${
+                className={`text-left break-all mt-4 md:mt-0 ${
                   isDarkMode ? 'text-gray-500' : 'text-gray-700'
                 }`}>
                 {data.bio && data.bio.substring(0, 100)}...
