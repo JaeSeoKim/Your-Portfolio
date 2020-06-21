@@ -54,6 +54,27 @@ const ProfileCard = ({ style, className, href, as, data }) => {
                 )}
               </div>
             </div>
+            <style jsx>{`
+              /* The emerging W3C standard
+              that is currently Firefox-only */
+              * {
+                scrollbar-width: thin;
+                scrollbar-color: #a0aec0 transparent;
+              }
+
+              /* Works on Chrome/Edge/Safari */
+              *::-webkit-scrollbar {
+                width: 3px;
+              }
+              *::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              *::-webkit-scrollbar-thumb {
+                background-color: #a0aec0;
+                border-radius: 15px;
+                border: 1px solid #a0aec0;
+              }
+            `}</style>
           </div>
         </Link>
       </div>
