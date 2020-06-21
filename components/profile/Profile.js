@@ -146,7 +146,7 @@ const Profile = ({ profileData, style, className, isEdit }) => {
         </div>
         <div>
           <Anchor tag={'Bio'} />
-          <div className="px-6 whitespace-pre break-words">
+          <div className="px-6 whitespace-pre-wrap break-all">
             {profileData.bio}
           </div>
         </div>

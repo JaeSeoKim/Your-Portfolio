@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import gql from 'graphql-tag'
-import Error from 'next/error'
+import Error from './_error'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
@@ -22,8 +22,11 @@ const userQuery = gql`
   }
 `
 
-const profile = ({ username }) => {
+const profile = ({ username, error: NotFound }) => {
   const { isDarkMode } = useContext(ThemeContext)
+  if (NotFound) {
+    return <Error statusCode={404} />
+  }
   const { data, loading, error } = useQuery(userQuery, {
     variables: { username }
   })
@@ -59,6 +62,7 @@ profile.getInitialProps = async (req, _res) => {
     }
   } catch (error) {
     return {
+      error: 404,
       username: req.query.username
     }
   }

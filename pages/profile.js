@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
-import Error from 'next/error'
+import Error from './_error'
 
 const profileQuery = gql`
   query {
