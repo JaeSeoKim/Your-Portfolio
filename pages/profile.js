@@ -4,6 +4,7 @@ import Router from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
+import Error from 'next/error'
 
 const profileQuery = gql`
   query {
@@ -34,7 +35,7 @@ const profile = () => {
     ) {
       Router.push('/')
     }
-    return <div>error</div>
+    return <Error statusCode={504} />
   }
 
   if (loading) {

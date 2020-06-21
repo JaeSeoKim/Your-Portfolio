@@ -6,6 +6,7 @@ import ThemeContext from '../lib/context/ThemContext'
 import ProfileCard from '../components/Home/ProfileCard'
 import { initializeApollo } from '../lib/apollo/client'
 import Dots from '../components/Home/Dots'
+import Error from 'next/error'
 
 const usersQuery = gql`
   query {
@@ -29,7 +30,7 @@ const home = () => {
   const users = data?.users
 
   if (error) {
-    return <div>error</div>
+    return <Error statusCode={404} />
   }
 
   if (loading) {

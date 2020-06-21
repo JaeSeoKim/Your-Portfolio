@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import gql from 'graphql-tag'
-import { useRouter } from 'next/router'
+import Error from 'next/error'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
@@ -31,7 +31,7 @@ const profile = ({ username }) => {
   const user = data?.user
 
   if (error) {
-    return <div>error</div>
+    return <Error statusCode={404} />
   }
 
   if (loading) {
@@ -47,15 +47,20 @@ const profile = ({ username }) => {
 
 profile.getInitialProps = async (req, _res) => {
   const apolloClient = initializeApollo()
+  try {
+    await apolloClient.query({
+      query: userQuery,
+      variables: { username: req.query.username }
+    })
 
-  await apolloClient.query({
-    query: userQuery,
-    variables: { username: req.query.username }
-  })
-
-  return {
-    initialApolloState: apolloClient.cache.extract(),
-    username: req.query.username
+    return {
+      initialApolloState: apolloClient.cache.extract(),
+      username: req.query.username
+    }
+  } catch (error) {
+    return {
+      username: req.query.username
+    }
   }
 }
 

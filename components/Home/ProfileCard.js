@@ -16,7 +16,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
    */
   return (
     <div className={className} style={style}>
-      <div className="w-full h-full md:h-64 lg:max-w-full lg:flex">
+      <div className="w-full h-full md:h-48 lg:max-w-full lg:flex">
         <Link href={'[username]'} as={data.username}>
           <div
             className={`w-full h-full md:flex cursor-pointer ${

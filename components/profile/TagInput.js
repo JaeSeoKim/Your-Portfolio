@@ -111,7 +111,6 @@ const TagInput = ({
             )}
           </div>
         </label>
-
         {isLoading && (
           <p className="text-blue-500 text-xs italic mt-2">Loading...</p>
         )}
