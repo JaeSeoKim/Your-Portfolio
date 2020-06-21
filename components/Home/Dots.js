@@ -39,7 +39,7 @@ const Dots = ({ style, className, href, as, value, children }) => {
           }
         }}
         deviceType={'all'}
-        arrows={false}
+        // arrows={false}
         infinite={true}
         autoPlay
         autoPlaySpeed={2000}
