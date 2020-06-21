@@ -16,19 +16,17 @@ const ProfileCard = ({ style, className, href, as, data }) => {
    */
   return (
     <div className={className} style={style}>
-      <div className="w-full h-full lg:max-w-full lg:flex">
+      <div className="w-full h-full md:h-48 lg:max-w-full lg:flex">
         <Link href={'[username]'} as={data.username}>
           <div
             className={`w-full h-full md:flex cursor-pointer ${
               isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
-            } ${
-              isDarkMode ? 'text-white' : 'text-gray-700'
-            } rounded-lg px-6 pt-6 pb-6 md:pb-3`}>
+            } ${isDarkMode ? 'text-white' : 'text-gray-700'} rounded-lg p-6`}>
             <img
               className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
               src={data.avatarUrl}
             />
-            <div className="text-center whitespace-pre-wrap md:flex md:flex-col md:justify-between md:text-left">
+            <div className="text-center whitespace-pre-wrap md:flex md:flex-col md:justify-between md:scrolling-touch md:overflow-y-auto md:text-left">
               <div>
                 <h2 className="md:inline text-lg">{data.username} </h2>
                 <span className="text-purple-500">{data.displayName}</span>
@@ -40,10 +38,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
                 {data.bio && data.bio.substring(0, 100).trim()}
                 {'...'}
               </div>
-              <div
-                className={
-                  'whitespace-no-wrap md:h-12 md:scrolling-touch md:overflow-y-auto'
-                }>
+              <div className={''}>
                 {data.tag && (
                   <div className={'flex flex-wrap'}>
                     {data.tag.map((value, index) => (
