@@ -16,12 +16,8 @@ const CustomDot = ({ onClick, ...rest }) => {
     <div
       className={
         isDarkMode
-          ? `w-3 h-1 ${
-              active ? 'bg-gray-300' : 'border border-gray-300'
-            } rounded m-1`
-          : `w-3 h-1 ${
-              active ? 'bg-gray-500' : 'border border-gray-500'
-            } rounded m-1`
+          ? `w-3 h-1 ${active ? 'bg-gray-100' : 'bg-gray-500'} rounded m-1`
+          : `w-3 h-1 ${active ? 'bg-gray-500' : 'bg-gray-100'} rounded m-1`
       }
       onClick={() => onClick()}
     />

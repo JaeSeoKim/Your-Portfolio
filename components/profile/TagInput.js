@@ -54,7 +54,7 @@ const TagInput = ({
             {value.map((value, index) => (
               <div
                 key={index}
-                className={`appearance-none inline-flex w-auto font-normal ${
+                className={`appearance-none inline-flex w-auto normal-case font-normal ${
                   isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
                 } placeholder-gray-600 ${
                   isDarkMode ? 'text-white' : 'text-gray-700'

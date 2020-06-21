@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import gql from 'graphql-tag'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
 
-const profileQuery = gql`
-  query {
-    profile {
+const userQuery = gql`
+  query userQuery($username: String!) {
+    user(username: $username) {
       id
       username
       displayName
@@ -22,18 +22,19 @@ const profileQuery = gql`
 `
 
 const profile = () => {
+  const router = useRouter()
+  const { username } = router.query
+  if (!username) {
+    return null
+  }
   const { isDarkMode } = useContext(ThemeContext)
-  const { data, loading, error } = useQuery(profileQuery)
+  const { data, loading, error } = useQuery(userQuery, {
+    variables: { username }
+  })
 
-  const profile = data?.profile
+  const user = data?.user
 
   if (error) {
-    if (
-      String(error) ===
-      'Error: GraphQL error: Authentication token is invalid, please log in'
-    ) {
-      Router.push('/')
-    }
     return <div>error</div>
   }
 
@@ -43,7 +44,7 @@ const profile = () => {
 
   return (
     <div className={'container max-w-screen-md mx-auto'}>
-      <Profile profileData={profile} className={'w-full'} isEdit />
+      <Profile profileData={user} className={'w-full'} />
     </div>
   )
 }

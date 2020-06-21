@@ -8,7 +8,7 @@ import Anchor from '../commons/Anchor'
 import { RiFileEditLine } from 'react-icons/ri'
 import Button from '../commons/Button'
 
-const Profile = ({ profileData, style, className }) => {
+const Profile = ({ profileData, style, className, isEdit }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
   /**
@@ -24,20 +24,22 @@ const Profile = ({ profileData, style, className }) => {
 
   return (
     <div style={style} className={className}>
-      <div className={'relative'}>
-        <Button
-          className={'absolute right-0 select-none'}
-          href={'/profile/edit'}
-          value={
-            <div className={'flex justify-center'}>
-              <RiFileEditLine
-                className={'fill-current inline-block h-4 w-4 mt-auto mr-1'}
-              />
-              Edit Profile
-            </div>
-          }
-        />
-      </div>
+      {isEdit && (
+        <div className={'relative'}>
+          <Button
+            className={'absolute right-0 select-none'}
+            href={'/profile/edit'}
+            value={
+              <div className={'flex justify-center'}>
+                <RiFileEditLine
+                  className={'fill-current inline-block h-4 w-4 mt-auto mr-1'}
+                />
+                Edit Profile
+              </div>
+            }
+          />
+        </div>
+      )}
       <div id="Profile" className="flex justify-center">
         <div className="flex flex-col w-full md:flex-row md:w-auto break-all">
           <PhotoFrame
@@ -112,15 +114,13 @@ const Profile = ({ profileData, style, className }) => {
                   </div>
                 )}
                 {profileData.tag && (
-                  <div className={'flex flex-wrap'}>
+                  <div className={'flex flex-wrap my-2'}>
                     {profileData.tag.map((value, index) => (
                       <div
                         key={index}
                         className={`appearance-none inline-flex w-auto font-normal text-sm ${
-                          isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
-                        } placeholder-gray-600 ${
-                          isDarkMode ? 'text-white' : 'text-gray-700'
-                        } rounded  py-1 px-2 mr-1 mt-2 `}>
+                          isDarkMode ? 'bg-gray-700' : 'bg-gray-200'
+                        } rounded-full  py-1 px-2 mr-1 mt-2 `}>
                         {value}
                       </div>
                     ))}
