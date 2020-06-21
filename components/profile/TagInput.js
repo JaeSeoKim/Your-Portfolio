@@ -18,8 +18,8 @@ const TagInput = ({
   const handelAddTagEnter = e => {
     if (!isLoading) {
       if (event.key === 'Enter') {
-        if (e.target.value.replace(/(^\s*)|(\s*$)/g, '') !== '') {
-          onChange(value.concat(e.target.value.replace(/(^\s*)|(\s*$)/g, '')))
+        if (e.target.value.trim() !== '') {
+          onChange(value.concat(e.target.value.trim()))
         }
         setInput(false)
       }
@@ -27,8 +27,8 @@ const TagInput = ({
   }
   const handelAddTagBlur = e => {
     if (!isLoading) {
-      if (e.target.value.replace(/(^\s*)|(\s*$)/g, '') !== '') {
-        onChange(value.concat(e.target.value.replace(/(^\s*)|(\s*$)/g, '')))
+      if (e.target.value.trim() !== '') {
+        onChange(value.concat(e.target.value.trim()))
       }
       setInput(false)
     }

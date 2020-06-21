@@ -26,15 +26,15 @@ const ProfileCard = ({ style, className, href, as, data }) => {
               className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
               src={data.avatarUrl}
             />
-            <div className="text-center md:text-left">
+            <div className="text-center whitespace-pre-wrap md:text-left">
               <h2 className="md:inline text-lg">{data.username} </h2>
               <span className="text-purple-500">{data.displayName}</span>
-              <pre
-                className={`text-left break-all mt-4 md:mt-0 ${
+              <div
+                className={`text-left mt-4 md:mt-0 ${
                   isDarkMode ? 'text-gray-500' : 'text-gray-700'
                 }`}>
-                {data.bio && data.bio.substring(0, 100)}...
-              </pre>
+                {data.bio && data.bio.substring(0, 100).trim()}
+              </div>
               <div className={''}>
                 {data.tag && (
                   <div className={'flex flex-wrap'}>
