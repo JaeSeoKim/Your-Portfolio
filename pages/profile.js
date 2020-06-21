@@ -34,12 +34,13 @@ const profile = () => {
       'Error: GraphQL error: Authentication token is invalid, please log in'
     ) {
       Router.push('/')
+      return null
     }
     return <Error statusCode={504} />
   }
 
   if (loading) {
-    return <div>loding</div>
+    return <div>loading</div>
   }
 
   return (

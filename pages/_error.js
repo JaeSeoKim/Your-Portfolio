@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import ThemeContext from '../lib/context/ThemContext'
 
-const Error = ({ statusCode }) => {
+function Error({ statusCode }) {
   const { isDarkMode } = useContext(ThemeContext)
   return (
     <div className={'flex items-center justify-center mt-64'}>
