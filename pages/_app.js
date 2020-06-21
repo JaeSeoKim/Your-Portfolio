@@ -6,16 +6,21 @@ import Layout from '../components/Layout'
 // import { profileQuery } from '../components/commons/Nav'
 import '../styles/tailwind.base.css'
 import 'react-multi-carousel/lib/styles.css'
+import { DefaultSeo } from 'next-seo'
+import SEO from '../next-seo.config'
 
 const app = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState)
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
+    <>
+      <ApolloProvider client={apolloClient}>
+        <Layout>
+          <DefaultSeo {...SEO} />
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
+    </>
   )
 }
 

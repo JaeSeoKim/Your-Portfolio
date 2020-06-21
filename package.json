@@ -31,6 +31,7 @@
     "mongoose": "^5.9.18",
     "next": "latest",
     "next-connect": "0.6.1",
+    "next-seo": "^4.5.0",
     "passport": "0.4.1",
     "passport-github": "^1.1.0",
     "passport-local": "1.0.0",

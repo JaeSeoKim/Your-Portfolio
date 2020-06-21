@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { NextSeo } from 'next-seo'
 import gql from 'graphql-tag'
 import Error from './_error'
 import { useQuery } from '@apollo/react-hooks'
@@ -62,10 +63,31 @@ const profile = ({ username, error: NotFound }) => {
 
   return (
     <div className={'container max-w-screen-md mx-auto'}>
+      <NextSeo
+        title={`${user.username} - Portfolio`}
+        description={user.bio && user.bio.substring(0, 100).trim() + '...'}
+        openGraph={{
+          title: `${user.username} - Portfolio`,
+          description: user.bio && user.bio.substring(0, 100).trim() + '...',
+          url: 'https://www.example.com/@firstlast123',
+          type: 'profile',
+          profile: {
+            username: user.username
+          },
+          images: [
+            {
+              url: user.avatarUrl,
+              width: 850,
+              height: 850,
+              alt: 'Profile Photo'
+            }
+          ]
+        }}
+      />
       <Profile
         profileData={user}
         className={'w-full'}
-        isEdit={profile ? user.id === profile.id && true : false}
+        isEdit={profile ? (user.id === profile.id ? true : false) : false}
       />
     </div>
   )

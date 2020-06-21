@@ -16,7 +16,7 @@ const checkLink = url => {
   }
 }
 
-const Profile = ({ profileData, style, className, isEdit }) => {
+const Profile = ({ profileData, style, className, isEdit = false }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
   /**
@@ -62,14 +62,7 @@ const Profile = ({ profileData, style, className, isEdit }) => {
                 : 'flex flex-col mx-auto lg:my-6 w-full md:w-auto max-w-xl md:max-w-md text-gray-700'
             }>
             <h1 className="text-3xl font-bold lg:text-4xl text-center">
-              <a data-tip={'GitHub ID!'} data-for={'githubID'}>
-                {profileData.username}
-              </a>
-              <ReactTooltip
-                type={isDarkMode ? 'dark' : 'light'}
-                effect={'solid'}
-                id={'githubID'}
-              />
+              {profileData.username}
             </h1>
             {profileData.username !== profileData.displayName && (
               <h2 className="text-2xl lg:text-3xl text-center">
