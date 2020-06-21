@@ -26,7 +26,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
               className="h-24 w-24 md:h-32 md:w-32 rounded-full mx-auto md:mx-0 md:mr-6"
               src={data.avatarUrl}
             />
-            <div className="text-center whitespace-pre-wrap md:flex md:flex-col md:justify-between md:scrolling-touch md:overflow-y-auto md:text-left">
+            <div className="text-center break-all justify-around md:flex md:flex-col md:justify-between md:scrolling-touch md:overflow-y-auto md:text-left">
               <div>
                 <h2 className="md:inline text-lg">{data.username} </h2>
                 <span className="text-purple-500">{data.displayName}</span>
@@ -38,7 +38,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
                 {data.bio && data.bio.substring(0, 100).trim()}
                 {'...'}
               </div>
-              <div className={''}>
+              <div className={'whitespace-pre-wrap'}>
                 {data.tag && (
                   <div className={'flex flex-wrap'}>
                     {data.tag.map((value, index) => (
