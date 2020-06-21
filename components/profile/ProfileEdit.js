@@ -86,8 +86,6 @@ const ProfileEdit = ({ profileData, style, className }) => {
       setIsLoading(true)
       await updateProfile({
         variables: {
-          id: profile.id,
-          username: profile.username,
           displayName: profile.displayName,
           profileUrl: profile.profileUrl,
           avatarUrl: profile.avatarUrl,
