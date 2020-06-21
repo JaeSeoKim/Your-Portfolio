@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
+import { initializeApollo } from '../lib/apollo/client'
 
 const userQuery = gql`
   query userQuery($username: String!) {
@@ -21,12 +22,7 @@ const userQuery = gql`
   }
 `
 
-const profile = () => {
-  const router = useRouter()
-  const { username } = router.query
-  if (!username) {
-    return null
-  }
+const profile = ({ username }) => {
   const { isDarkMode } = useContext(ThemeContext)
   const { data, loading, error } = useQuery(userQuery, {
     variables: { username }
@@ -39,7 +35,7 @@ const profile = () => {
   }
 
   if (loading) {
-    return <div>loding</div>
+    return <div>loading</div>
   }
 
   return (
@@ -47,6 +43,20 @@ const profile = () => {
       <Profile profileData={user} className={'w-full'} />
     </div>
   )
+}
+
+profile.getInitialProps = async (req, _res) => {
+  const apolloClient = initializeApollo()
+
+  await apolloClient.query({
+    query: userQuery,
+    variables: { username: req.query.username }
+  })
+
+  return {
+    initialApolloState: apolloClient.cache.extract(),
+    username: req.query.username
+  }
 }
 
 export default profile
