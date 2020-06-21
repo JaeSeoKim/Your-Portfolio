@@ -3,7 +3,6 @@ import Router from 'next/router'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../../lib/context/ThemContext'
-import Profile from '../../components/profile/Profile'
 import ProfileEdit from '../../components/profile/ProfileEdit'
 import Error from '../_error'
 

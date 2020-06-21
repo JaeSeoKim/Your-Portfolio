@@ -2,6 +2,36 @@ import React, { useContext } from 'react'
 import ThemeContext from '../../lib/context/ThemContext'
 import Link from 'next/link'
 import Carousel from 'react-multi-carousel'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
+
+const CustomLeftArrow = ({ onClick }) => {
+  const { isDarkMode } = useContext(ThemeContext)
+
+  return null
+  // <AiOutlineArrowLeft
+  //   onClick={() => onClick()}
+  //   className={`absolute w-8 h-8 pb-2 react-multiple-carousel__arrow--left ${
+  //     isDarkMode
+  //       ? 'text-gray-600 hover:text-gray-300'
+  //       : 'text-gray-300 hover:text-gray-600'
+  //   }`}
+  // />
+}
+
+const CustomRightArrow = ({ onClick }) => {
+  const { isDarkMode } = useContext(ThemeContext)
+
+  return (
+    <AiOutlineArrowRight
+      onClick={() => onClick()}
+      className={`absolute w-8 h-8 pb-3 react-multiple-carousel__arrow--right ${
+        isDarkMode
+          ? 'text-gray-600 hover:text-gray-300'
+          : 'text-gray-300 hover:text-gray-600'
+      }`}
+    />
+  )
+}
 
 const CustomDot = ({ onClick, ...rest }) => {
   const { isDarkMode } = useContext(ThemeContext)
@@ -25,8 +55,6 @@ const CustomDot = ({ onClick, ...rest }) => {
 }
 
 const Dots = ({ style, className, href, as, value, children }) => {
-  const { isDarkMode } = useContext(ThemeContext)
-
   return (
     <div className={className} style={style}>
       <Carousel
@@ -39,7 +67,9 @@ const Dots = ({ style, className, href, as, value, children }) => {
           }
         }}
         deviceType={'all'}
-        // arrows={false}
+        customRightArrow={<CustomRightArrow />}
+        customLeftArrow={<CustomLeftArrow />}
+        arrows={true}
         infinite={true}
         autoPlay
         autoPlaySpeed={2000}
