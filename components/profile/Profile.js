@@ -36,7 +36,8 @@ const Profile = ({ profileData, style, className, isEdit }) => {
         <div className={'relative'}>
           <Button
             className={'absolute right-0 select-none'}
-            href={'/profile/edit'}
+            href={'/[username]/edit'}
+            as={`/${profileData.username}/edit`}
             value={
               <div className={'flex justify-center'}>
                 <RiFileEditLine

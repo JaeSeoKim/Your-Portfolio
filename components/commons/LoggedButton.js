@@ -8,7 +8,7 @@ const LoggedButton = ({ style, className, user }) => {
         className={
           'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none'
         }>
-        <Link href={'/profile'} as={`/profile`}>
+        <Link href={'/[username]'} as={`/${user}`}>
           <a className={'hover:text-gray-300 cursor-pointer'}>{user}</a>
         </Link>
         <div className={'mx-2 select-none'}>|</div>

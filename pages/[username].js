@@ -6,6 +6,22 @@ import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
 import { initializeApollo } from '../lib/apollo/client'
 
+const profileQuery = gql`
+  query {
+    profile {
+      id
+      username
+      displayName
+      profileUrl
+      avatarUrl
+      email
+      blog
+      bio
+      tag
+    }
+  }
+`
+
 const userQuery = gql`
   query userQuery($username: String!) {
     user(username: $username) {
@@ -31,7 +47,10 @@ const profile = ({ username, error: NotFound }) => {
     variables: { username }
   })
 
+  const { data: profileData } = useQuery(profileQuery)
+
   const user = data?.user
+  const profile = profileData?.profile
 
   if (error) {
     return <Error statusCode={404} />
@@ -43,7 +62,11 @@ const profile = ({ username, error: NotFound }) => {
 
   return (
     <div className={'container max-w-screen-md mx-auto'}>
-      <Profile profileData={user} className={'w-full'} />
+      <Profile
+        profileData={user}
+        className={'w-full'}
+        isEdit={profile ? user.id === profile.id && true : false}
+      />
     </div>
   )
 }
