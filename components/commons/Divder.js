@@ -15,11 +15,11 @@ const Divder = ({ vertical, color, id, style, className }) => {
           className={
             vertical
               ? isDarkMode
-                ? 'divder my-auto h-full w-2 my-2 bg-gray-300 rounded-full'
-                : 'divder my-auto h-full w-2 my-2 bg-gray-500 rounded-full'
+                ? 'divder my-auto h-full w-2 my-2 bg-gray-800 rounded-full'
+                : 'divder my-auto h-full w-2 my-2 bg-gray-100 rounded-full'
               : isDarkMode
-              ? 'divder w-full h-2 my-2 bg-gray-300 rounded-full'
-              : 'divder w-full h-2 my-2 bg-gray-500 rounded-full'
+              ? 'divder w-full h-2 my-2 bg-gray-800 rounded-full'
+              : 'divder w-full h-2 my-2 bg-gray-100 rounded-full'
           }
           style={
             color

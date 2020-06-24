@@ -7,6 +7,7 @@ import PhotoFrame from './PhotoFrame'
 import Input from '../commons/Input'
 import TextArea from '../commons/TextArea'
 import TagInput from './TagInput'
+import TimeLineInput from './TimeLineInput'
 
 const UpdateProfileMutaition = gql`
   mutation UpdateProfileMutaition(
@@ -178,12 +179,18 @@ const ProfileEdit = ({ profileData, style, className }) => {
             onChange={handelTag}
           />
           <TextArea
-            className={'w-full'}
+            className={'w-full px-3 mb-6'}
             label={'Bio'}
             value={profile.bio}
             onChange={handelBio}
             placeholder={'Introducing Yourself'}
             isLoading={isLoading}
+          />
+          <TimeLineInput
+            className={'w-full px-3 mb-6'}
+            isLoading={isLoading}
+            value={profile.tag}
+            onChange={handelTag}
           />
           <div className="w-full px-3 mb-6">
             <button

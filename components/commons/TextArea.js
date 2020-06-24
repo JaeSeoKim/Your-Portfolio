@@ -20,7 +20,7 @@ const TextArea = ({
 
   return (
     <div className={className} style={style}>
-      <div className="w-full px-3 mb-6">
+      <div className="w-full mb-3">
         <label
           className={`block uppercase tracking-wide ${
             isDarkMode ? 'text-gray-300' : 'text-gray-700'

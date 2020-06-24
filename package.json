@@ -27,6 +27,7 @@
     "cookie": "0.4.0",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
+    "highlight.js": "^10.1.1",
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.9.18",
     "next": "latest",
@@ -39,8 +40,11 @@
     "react-dom": "latest",
     "react-github-heatmap": "^1.0.4",
     "react-icons": "^3.10.0",
+    "react-markdown": "^4.3.1",
     "react-multi-carousel": "^2.5.5",
     "react-tooltip": "^4.2.7",
+    "react-vertical-timeline-component": "^3.0.2",
+    "remark-highlight.js": "^6.0.0",
     "swr": "0.1.16"
   },
   "devDependencies": {

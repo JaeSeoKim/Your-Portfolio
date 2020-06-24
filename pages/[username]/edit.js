@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Router from 'next/router'
 import gql from 'graphql-tag'
+import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../../lib/context/ThemContext'
 import ProfileEdit from '../../components/profile/ProfileEdit'
@@ -24,6 +25,11 @@ const profileQuery = gql`
 
 const profile = () => {
   const { isDarkMode } = useContext(ThemeContext)
+  const router = useRouter()
+  const {
+    query: { username }
+  } = router
+
   const { data, loading, error } = useQuery(profileQuery)
 
   const profile = data?.profile
@@ -41,6 +47,11 @@ const profile = () => {
 
   if (loading) {
     return <div>loding</div>
+  }
+
+  if (profile.username !== username) {
+    Router.push('/')
+    return null
   }
 
   return (

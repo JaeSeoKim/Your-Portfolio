@@ -77,8 +77,6 @@ const profile = ({ username, error: NotFound }) => {
           images: [
             {
               url: user.avatarUrl,
-              width: 850,
-              height: 850,
               alt: 'Profile Photo'
             }
           ]
@@ -93,22 +91,21 @@ const profile = ({ username, error: NotFound }) => {
   )
 }
 
-profile.getInitialProps = async (req, _res) => {
+profile.getInitialProps = async ctx => {
   const apolloClient = initializeApollo()
   try {
     await apolloClient.query({
       query: userQuery,
-      variables: { username: req.query.username }
+      variables: { username: ctx.query.username }
     })
-
     return {
       initialApolloState: apolloClient.cache.extract(),
-      username: req.query.username
+      username: ctx.query.username
     }
   } catch (error) {
     return {
       error: 404,
-      username: req.query.username
+      username: ctx.query.username
     }
   }
 }
