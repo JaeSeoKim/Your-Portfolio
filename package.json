@@ -37,6 +37,7 @@
     "passport-github": "^1.1.0",
     "passport-local": "1.0.0",
     "react": "latest",
+    "react-color": "^2.18.1",
     "react-dom": "latest",
     "react-github-heatmap": "^1.0.4",
     "react-icons": "^3.10.0",
@@ -44,7 +45,6 @@
     "react-multi-carousel": "^2.5.5",
     "react-tooltip": "^4.2.7",
     "react-vertical-timeline-component": "^3.0.2",
-    "remark-highlight.js": "^6.0.0",
     "swr": "0.1.16"
   },
   "devDependencies": {

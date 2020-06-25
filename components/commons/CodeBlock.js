@@ -30,13 +30,16 @@ class CodeBlock extends React.PureComponent {
         style={{
           padding: '0.2em 0.4em',
           margin: 0,
+          marginBottom: '10px',
           fontSize: '85%',
-          backgroundColor: 'rgba(27, 31, 35, 0.05)',
+          backgroundColor: '#2B3643',
           borderRadius: '3px'
         }}>
         <code
           ref={this.setRef}
-          className={`language-${this.props.language}`}
+          className={`language-${
+            this.props.language ? this.props.language : 'plaintext'
+          }`}
           style={{
             padding: '0.2em 0.4em',
             margin: 0,

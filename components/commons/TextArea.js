@@ -18,6 +18,23 @@ const TextArea = ({
     onChange(e.target.value)
   }
 
+  const handelKeyDown = e => {
+    if (
+      (e.charCode === 9 || e.keyCode === 9) &&
+      !e.altKey &&
+      !e.ctrlKey &&
+      !e.metaKey
+    ) {
+      e.preventDefault()
+      const start = e.target.selectionStart
+      e.target.value =
+        e.target.value.substring(0, e.target.selectionStart) +
+        '    ' + // Tab Indent == 4
+        e.target.value.substring(e.target.selectionEnd)
+      e.target.selectionEnd = start + 4
+    }
+  }
+
   return (
     <div className={className} style={style}>
       <div className="w-full mb-3">
@@ -38,6 +55,7 @@ const TextArea = ({
             isDarkMode ? 'focus:bg-gray-700' : 'focus:bg-white'
           } ${isLoading ? 'cursor-wait' : 'cursor-text'}`}
           onChange={handelChange}
+          onKeyDown={handelKeyDown}
           placeholder={placeholder}
           value={value}
           disabled={isLoading}

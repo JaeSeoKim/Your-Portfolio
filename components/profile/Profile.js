@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import ReactTooltip from 'react-tooltip'
 import ThemeContext from '../../lib/context/ThemContext'
 import PhotoFrame from './PhotoFrame'
 import Divder from '../commons/Divder'
@@ -7,6 +6,10 @@ import GitContributions from './GitContributions'
 import Anchor from '../commons/Anchor'
 import { RiFileEditLine } from 'react-icons/ri'
 import Button from '../commons/Button'
+import Markdwon from '../commons/Markdown'
+import CodeBlock from '../commons/CodeBlock'
+import ReactMarkdown from 'react-markdown'
+import Markdown from '../commons/Markdown'
 
 const checkLink = url => {
   if (/^(https?|http?):\/\//g.test(url)) {
@@ -134,11 +137,7 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
         </div>
       </div>
       <div
-        className={
-          isDarkMode
-            ? 'text-white max-w-5xl mx-auto'
-            : 'text-gray-700 max-w-5xl mx-auto'
-        }>
+        className={isDarkMode ? 'text-white mx-auto' : 'text-gray-700 mx-auto'}>
         <div>
           <Anchor tag={'GitHub Contributions'} />
           <GitContributions
@@ -148,9 +147,7 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
         </div>
         <div>
           <Anchor tag={'Bio'} />
-          <div className="px-6 whitespace-pre-wrap break-all">
-            {profileData.bio}
-          </div>
+          <Markdown source={profileData.bio} />
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ const profile = ({ username, error: NotFound }) => {
   }
 
   return (
-    <div className={'container max-w-screen-md mx-auto'}>
+    <div className={'container max-w-screen-lg mx-auto'}>
       <NextSeo
         title={`${user.username} - Portfolio`}
         description={user.bio && user.bio.substring(0, 100).trim() + '...'}

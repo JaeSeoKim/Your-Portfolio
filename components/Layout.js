@@ -39,7 +39,9 @@ const Layout = ({ children }) => {
           isDarkMode ? { background: '#272C35' } : { background: '#E2E8F0' }
         }>
         <Nav />
-        <div className={'container min-h-screen mx-auto p-6 '}>{children}</div>
+        <div className={'container min-h-screen mx-auto p-4 md:p-6 '}>
+          {children}
+        </div>
         <Footer />
       </div>
       <ToggleButton

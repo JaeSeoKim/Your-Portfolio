@@ -59,6 +59,7 @@ const ProfileEdit = ({ profileData, style, className }) => {
     bio
    */
     ...profileData,
+    timeLineFeild: [],
     typeAvatarUrl: false,
     typeEmail: false
   })
@@ -80,6 +81,22 @@ const ProfileEdit = ({ profileData, style, className }) => {
     setProfile({ ...profile, tag: value })
   }
   const handelBio = value => setProfile({ ...profile, bio: value })
+  const handelAddTimeLineFeild = () =>
+    setProfile({
+      ...profile,
+      timeLineFeild: profile.timeLineFeild.concat({
+        title: '',
+        timeLine: [
+          {
+            color: '#f44336',
+            icon: 'DiCode',
+            title: '',
+            subtitle: '',
+            value: ''
+          }
+        ]
+      })
+    })
 
   const handelSubmit = async e => {
     e.preventDefault()
@@ -121,7 +138,7 @@ const ProfileEdit = ({ profileData, style, className }) => {
       </div>
       <div className="flex justify-center">
         <Input
-          className={'px-3 mb-6 w-full max-w-screen-md'}
+          className={'px-3 mb-6 w-full max-w-screen-lg'}
           label={'Profile Img Url'}
           placeholder={'https://img.example/profile.png'}
           type={'url'}
@@ -133,7 +150,7 @@ const ProfileEdit = ({ profileData, style, className }) => {
         />
       </div>
       <div className="flex justify-center">
-        <div className="flex flex-wrap -mx-3 mb-6 w-full max-w-screen-md">
+        <div className="flex flex-wrap -mx-3 mb-6 w-full max-w-screen-lg">
           <Input
             className={'w-full md:w-1/2 px-3 mb-6'}
             label={'Display Name'}
@@ -186,12 +203,54 @@ const ProfileEdit = ({ profileData, style, className }) => {
             placeholder={'Introducing Yourself'}
             isLoading={isLoading}
           />
-          <TimeLineInput
-            className={'w-full px-3 mb-6'}
-            isLoading={isLoading}
-            value={profile.tag}
-            onChange={handelTag}
-          />
+          {profile.timeLineFeild.map((value, index) => (
+            <TimeLineInput
+              key={index}
+              className={'w-full px-3 mb-6'}
+              isLoading={isLoading}
+              value={value}
+              onDelete={() => {
+                setProfile({
+                  ...profile,
+                  timeLineFeild: profile.timeLineFeild
+                    .slice(0, index)
+                    .concat(
+                      profile.timeLineFeild.slice(
+                        index + 1,
+                        profile.timeLineFeild.length
+                      )
+                    )
+                })
+              }}
+              onChange={data => {
+                setProfile({
+                  ...profile,
+                  timeLineFeild: profile.timeLineFeild
+                    .slice(0, index)
+                    .concat(
+                      data,
+                      profile.timeLineFeild.slice(
+                        index + 1,
+                        profile.timeLineFeild.length
+                      )
+                    )
+                })
+              }}
+            />
+          ))}
+
+          <div
+            onClick={handelAddTimeLineFeild}
+            className={`w-full text-xl text-center ${
+              isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
+            } placeholder-gray-600 ${
+              isDarkMode ? 'text-white' : 'text-gray-700'
+            } rounded mx-3 mt-2 mb-6 ${
+              isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-white'
+            } cursor-pointer`}>
+            Add
+          </div>
+
           <div className="w-full px-3 mb-6">
             <button
               className={
