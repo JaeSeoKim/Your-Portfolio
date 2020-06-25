@@ -19,6 +19,16 @@ const profileQuery = gql`
       blog
       bio
       tag
+      timeLineFeilds {
+        title
+        timeLine {
+          color
+          icon
+          title
+          subtitle
+          value
+        }
+      }
     }
   }
 `

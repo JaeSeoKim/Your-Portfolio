@@ -41,15 +41,17 @@ const home = () => {
     <div className={'container'}>
       Home
       <div className={'flex justify-centor'}>
-        <Dots className={'w-full lg:w-1/2'}>
-          {users.map((value, index) => (
-            <ProfileCard
-              key={index}
-              data={value}
-              className={'w-full h-full px-2 pb-5'}
-            />
-          ))}
-        </Dots>
+        {/* {users && (
+          <Dots className={'w-full lg:w-1/2'}>
+            {users.map((value, index) => (
+              <ProfileCard
+                key={index}
+                data={value}
+                className={'w-full h-full px-2 pb-5'}
+              />
+            ))}
+          </Dots>
+        )} */}
       </div>
     </div>
   )

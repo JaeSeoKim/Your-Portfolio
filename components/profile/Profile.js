@@ -10,6 +10,11 @@ import Markdwon from '../commons/Markdown'
 import CodeBlock from '../commons/CodeBlock'
 import ReactMarkdown from 'react-markdown'
 import Markdown from '../commons/Markdown'
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
+} from 'react-vertical-timeline-component'
+import { getIcon } from './TimeLineEdit'
 
 const checkLink = url => {
   if (/^(https?|http?):\/\//g.test(url)) {
@@ -150,6 +155,36 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
           <Markdown source={profileData.bio} />
         </div>
       </div>
+      {profileData.timeLineFeilds &&
+        profileData.timeLineFeilds.map(element => (
+          <div>
+            <div className={isDarkMode ? 'text-white' : 'text-gray-700'}>
+              <Anchor tag={element.title} />
+            </div>
+            <VerticalTimeline layout={'1-column'}>
+              {element.timeLine.map((value, index) => (
+                <VerticalTimelineElement
+                  key={index}
+                  contentStyle={{
+                    boxShadow:
+                      '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    borderTop: `2px solid ${value.color || '#f44336'}`
+                  }}
+                  icon={getIcon(value.icon)}
+                  iconStyle={{
+                    background: value.color || '#f44336'
+                  }}>
+                  <h3 className="text-xl font-semibold">{value.title}</h3>
+                  <h4 className="text-lg font-medium">{value.subtitle}</h4>
+                  <Markdown
+                    source={value.value}
+                    style={{ maxHeight: '16em', overflow: 'auto' }}
+                  />
+                </VerticalTimelineElement>
+              ))}
+            </VerticalTimeline>
+          </div>
+        ))}
     </div>
   )
 }

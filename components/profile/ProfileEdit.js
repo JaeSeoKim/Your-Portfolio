@@ -18,6 +18,7 @@ const UpdateProfileMutaition = gql`
     $blog: String!
     $bio: String!
     $tag: [String!]!
+    $timeLineFeilds: [InputTimeLineFeild!]!
   ) {
     updateProfile(
       input: {
@@ -28,6 +29,7 @@ const UpdateProfileMutaition = gql`
         blog: $blog
         bio: $bio
         tag: $tag
+        timeLineFeilds: $timeLineFeilds
       }
     ) {
       id
@@ -39,6 +41,16 @@ const UpdateProfileMutaition = gql`
       blog
       bio
       tag
+      timeLineFeilds {
+        title
+        timeLine {
+          color
+          icon
+          title
+          subtitle
+          value
+        }
+      }
     }
   }
 `
@@ -59,7 +71,6 @@ const ProfileEdit = ({ profileData, style, className }) => {
     bio
    */
     ...profileData,
-    timeLineFeild: [],
     typeAvatarUrl: false,
     typeEmail: false
   })
@@ -84,23 +95,47 @@ const ProfileEdit = ({ profileData, style, className }) => {
   const handelAddTimeLineFeild = () =>
     setProfile({
       ...profile,
-      timeLineFeild: profile.timeLineFeild.concat({
-        title: '',
-        timeLine: [
-          {
-            color: '#f44336',
-            icon: 'DiCode',
+      timeLineFeilds: profile.timeLineFeilds
+        ? profile.timeLineFeilds.concat({
             title: '',
-            subtitle: '',
-            value: ''
-          }
-        ]
-      })
+            timeLine: [
+              {
+                color: '#f44336',
+                icon: 'DiCode',
+                title: '',
+                subtitle: '',
+                value: ''
+              }
+            ]
+          })
+        : [
+            {
+              title: '',
+              timeLine: [
+                {
+                  color: '#f44336',
+                  icon: 'DiCode',
+                  title: '',
+                  subtitle: '',
+                  value: ''
+                }
+              ]
+            }
+          ]
     })
 
   const handelSubmit = async e => {
     e.preventDefault()
     try {
+      const timeLineFeilds = profile.timeLineFeilds.map(feilds => {
+        const { title, timeLine } = feilds
+        let removeTimeLine = []
+        timeLine.map(data => {
+          const { __typename, ...other } = data
+          removeTimeLine.push(other)
+        })
+        return { title, timeLine: removeTimeLine }
+      })
       setIsLoading(true)
       await updateProfile({
         variables: {
@@ -110,11 +145,13 @@ const ProfileEdit = ({ profileData, style, className }) => {
           email: profile.email,
           blog: profile.blog,
           bio: profile.bio,
-          tag: profile.tag
+          tag: profile.tag,
+          timeLineFeilds: timeLineFeilds
         }
       })
       Router.push('/[username]', `/${profileData.username}`)
     } catch (error) {
+      console.log(error)
       console.log('[/profile/edit] submit Error')
       setIsLoading(false)
     }
@@ -203,41 +240,42 @@ const ProfileEdit = ({ profileData, style, className }) => {
             placeholder={'Introducing Yourself'}
             isLoading={isLoading}
           />
-          {profile.timeLineFeild.map((value, index) => (
-            <TimeLineInput
-              key={index}
-              className={'w-full px-3 mb-6'}
-              isLoading={isLoading}
-              value={value}
-              onDelete={() => {
-                setProfile({
-                  ...profile,
-                  timeLineFeild: profile.timeLineFeild
-                    .slice(0, index)
-                    .concat(
-                      profile.timeLineFeild.slice(
-                        index + 1,
-                        profile.timeLineFeild.length
+          {profile.timeLineFeilds &&
+            profile.timeLineFeilds.map((value, index) => (
+              <TimeLineInput
+                key={index}
+                className={'w-full px-3 mb-6'}
+                isLoading={isLoading}
+                value={value}
+                onDelete={() => {
+                  setProfile({
+                    ...profile,
+                    timeLineFeilds: profile.timeLineFeilds
+                      .slice(0, index)
+                      .concat(
+                        profile.timeLineFeilds.slice(
+                          index + 1,
+                          profile.timeLineFeilds.length
+                        )
                       )
-                    )
-                })
-              }}
-              onChange={data => {
-                setProfile({
-                  ...profile,
-                  timeLineFeild: profile.timeLineFeild
-                    .slice(0, index)
-                    .concat(
-                      data,
-                      profile.timeLineFeild.slice(
-                        index + 1,
-                        profile.timeLineFeild.length
+                  })
+                }}
+                onChange={data => {
+                  setProfile({
+                    ...profile,
+                    timeLineFeilds: profile.timeLineFeilds
+                      .slice(0, index)
+                      .concat(
+                        data,
+                        profile.timeLineFeilds.slice(
+                          index + 1,
+                          profile.timeLineFeilds.length
+                        )
                       )
-                    )
-                })
-              }}
-            />
-          ))}
+                  })
+                }}
+              />
+            ))}
 
           <div
             onClick={handelAddTimeLineFeild}
