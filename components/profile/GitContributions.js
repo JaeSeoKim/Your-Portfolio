@@ -8,15 +8,15 @@ const GitContributions = ({ githubId, style, className }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
   const { data: contributionData, error } = useRequest({
-    url: `https://github-contributions.now.sh/api/v1/${githubId}`
-    // url: `http://127.0.0.1:8080/v1/${githubId}`
+    url: `https://your-portfolio.vercel.app/api/git/${githubId}`
+    // url: `http://127.0.0.1:3000/api/git/${githubId}`
   })
 
   if (error) {
     return (
       <div
         className={`${className} bg-red-100 border-l-4 border-red-500 text-red-700 p-4`}>
-        <p className="font-bold">Error</p>
+        <p className="font-bold">Error: </p>
         <p>Can't get github contributions Data</p>
       </div>
     )
@@ -80,10 +80,10 @@ const GitContributions = ({ githubId, style, className }) => {
             : {
                 background: 'transparent',
                 text: '#000',
-                grade4: '#196127',
-                grade3: '#239a3b',
-                grade2: '#7bc96f',
-                grade1: '#c6e48b',
+                grade4: '#216e39',
+                grade3: '#30a14e',
+                grade2: '#40c463',
+                grade1: '#9be9a8',
                 grade0: '#ebedf0'
               }
         }>
