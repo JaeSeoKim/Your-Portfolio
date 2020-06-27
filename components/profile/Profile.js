@@ -6,9 +6,6 @@ import GitContributions from './GitContributions'
 import Anchor from '../commons/Anchor'
 import { RiFileEditLine } from 'react-icons/ri'
 import Button from '../commons/Button'
-import Markdwon from '../commons/Markdown'
-import CodeBlock from '../commons/CodeBlock'
-import ReactMarkdown from 'react-markdown'
 import Markdown from '../commons/Markdown'
 import {
   VerticalTimeline,
@@ -142,7 +139,7 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
         </div>
       </div>
       <div
-        className={isDarkMode ? 'text-white mx-auto' : 'text-gray-700 mx-auto'}>
+        className={isDarkMode ? 'text-white mx-auto' : 'text-gray-900 mx-auto'}>
         <div>
           <Anchor tag={'GitHub Contributions'} />
           <GitContributions

@@ -15,7 +15,7 @@ const TimeLineInput = ({
 
   return (
     <div
-      className={`${className} relative border-b-2 border-t-2 ${
+      className={`${className} relative border-t-2 ${
         isDarkMode ? 'border-gray-700' : 'border-white'
       }`}
       style={style}>

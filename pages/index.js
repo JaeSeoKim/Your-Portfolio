@@ -41,7 +41,7 @@ const home = () => {
     <div className={'container'}>
       Home
       <div className={'flex justify-centor'}>
-        {/* {users && (
+        {users.map && (
           <Dots className={'w-full lg:w-1/2'}>
             {users.map((value, index) => (
               <ProfileCard
@@ -51,7 +51,7 @@ const home = () => {
               />
             ))}
           </Dots>
-        )} */}
+        )}
       </div>
     </div>
   )

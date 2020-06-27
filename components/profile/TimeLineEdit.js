@@ -1,13 +1,10 @@
 import React, { useContext, useState } from 'react'
 import ThemeContext from '../../lib/context/ThemContext'
 import TextArea from '../commons/TextArea'
-import { AiOutlineClose, AiOutlineCheck, AiOutlineDelete } from 'react-icons/ai'
-import { FiMinusCircle, FiMinus } from 'react-icons/fi'
+import dynamic from 'next/dynamic'
+import { FiMinus } from 'react-icons/fi'
 import Input from '../commons/Input'
-import {
-  VerticalTimeline,
-  VerticalTimelineElement
-} from 'react-vertical-timeline-component'
+import { VerticalTimelineElement } from 'react-vertical-timeline-component'
 import Markdown from '../commons/Markdown'
 import { CirclePicker } from 'react-color'
 import IconPicker from './IconPicker'
@@ -110,9 +107,9 @@ const TimeLineEdit = ({
               onDelete()
             }
           }}
-          className={`absolute right-0 top-0 pr-2 h-8 w-8 ${
+          className={`transform transition duration-150 ease-in-out hover:scale-125 absolute right-0 top-0 pr-2 h-8 w-8 ${
             isDarkMode ? 'text-gray-100' : 'text-gray-800'
-          } cursor-pointer`}
+          } hover:text-red-600 cursor-pointer`}
         />
         {isEdit && (
           <div className={'flex flex-wrap w-full'}>

@@ -8,7 +8,8 @@ const GitContributions = ({ githubId, style, className }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
   const { data: contributionData, error } = useRequest({
-    url: `https://github-contributions-api.now.sh/v1/${githubId}`
+    url: `https://github-contributions.now.sh/api/v1/${githubId}`
+    // url: `http://127.0.0.1:8080/v1/${githubId}`
   })
 
   if (error) {
