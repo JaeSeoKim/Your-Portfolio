@@ -7,17 +7,22 @@ import ThemeContext from '../../lib/context/ThemContext'
 const GitContributions = ({ githubId, style, className }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
+  const URL =
+    process.env.NODE_ENV &&
+    process.env.NODE_ENV.trim().toLowerCase() == 'production'
+      ? `https://your-portfolio.vercel.app/api/git/${githubId}`
+      : `http://localhost:3000/api/git/${githubId}`
+
   const { data: contributionData, error } = useRequest({
-    // url: `https://your-portfolio.vercel.app/api/git/${githubId}`
-    url: `http://localhost:3000/api/git/${githubId}`
+    url: URL
   })
 
   if (error) {
     return (
       <div
         className={`${className} bg-red-100 border-l-4 border-red-500 text-red-700 p-4`}>
-        <p className="font-bold">Error:</p>
-        <p>{'\t'}Can't get github contributions Data</p>
+        <p className="font-bold">Error_</p>
+        <p>Can't get github contributions Data</p>
       </div>
     )
   }
@@ -78,7 +83,7 @@ const GitContributions = ({ githubId, style, className }) => {
                 grade0: '#282a36'
               }
             : {
-                background: 'transparent',
+                background: 'rgba(0, 0, 0, 0.03)',
                 text: '#000',
                 grade4: '#216e39',
                 grade3: '#30a14e',

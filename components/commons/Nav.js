@@ -77,20 +77,10 @@ const Nav = ({ nav }) => {
           <div className="text-sm lg:flex-grow mt-auto">
             {subMenu ? (
               <>
-                <Link href="/">
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
-                    Home
-                  </a>
-                </Link>
                 <a
-                  href="#Profile"
+                  href="#Bio"
                   className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
-                  Profile
-                </a>
-                <a
-                  href="#GitHub Contributions"
-                  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
-                  GitHub
+                  Bio
                 </a>
                 {subMenu.map((menu, index) => (
                   <a
@@ -114,32 +104,36 @@ const Nav = ({ nav }) => {
           {name ? (
             <div>
               {profile ? (
-                <div
-                  className={
-                    'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none'
-                  }>
-                  <Link href={'/'}>
-                    <a className={'hover:text-gray-300 cursor-pointer'}>
-                      MainPage
-                    </a>
-                  </Link>
-                  <div className={'mx-2 select-none'}>|</div>
-                  <Link href="/api/logout">
-                    <a className={'hover:text-gray-300 cursor-pointer'}>
-                      Logout
-                    </a>
-                  </Link>
+                <div className={'flex justify-end'}>
+                  <div
+                    className={
+                      'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none'
+                    }>
+                    <Link href={'/'}>
+                      <a className={'hover:text-gray-300 cursor-pointer'}>
+                        Go Home
+                      </a>
+                    </Link>
+                    <div className={'mx-2 select-none'}>|</div>
+                    <Link href="/api/logout">
+                      <a className={'hover:text-gray-300 cursor-pointer'}>
+                        Logout
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               ) : (
-                <div
-                  className={
-                    'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none border border-white hover:border-gray-300'
-                  }>
-                  <Link href={'/'}>
-                    <a className={'hover:text-gray-300 cursor-pointer'}>
-                      Create Your Portfolio
-                    </a>
-                  </Link>
+                <div className={'flex justify-end'}>
+                  <div
+                    className={
+                      'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none border border-white hover:border-gray-300'
+                    }>
+                    <Link href={'/'}>
+                      <a className={'hover:text-gray-300 cursor-pointer'}>
+                        Create Your Portfolio
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>

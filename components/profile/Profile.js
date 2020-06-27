@@ -138,6 +138,10 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
           </div>
         </div>
       </div>
+      {/* <GitContributions
+        className={'pt-3 flex justify-center'}
+        githubId={profileData.username}
+      /> */}
       <div
         className={isDarkMode ? 'text-white mx-auto' : 'text-gray-900 mx-auto'}>
         <div>
@@ -154,8 +158,8 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
       </div>
       {profileData.timeLineFeilds &&
         profileData.timeLineFeilds.map((element, index) => (
-          <div className={'overflow-hidden'} key={index}>
-            <div className={isDarkMode ? 'text-white' : 'text-gray-700'}>
+          <div className={'overflow-hidden mx-auto'} key={index}>
+            <div className={isDarkMode ? 'text-white' : 'text-gray-900'}>
               <Anchor tag={element.title} />
             </div>
             <VerticalTimeline layout={'1-column'}>
