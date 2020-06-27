@@ -78,6 +78,11 @@ const Nav = ({ nav }) => {
             {subMenu ? (
               <>
                 <a
+                  href="#Profile"
+                  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                  Profile
+                </a>
+                <a
                   href="#Bio"
                   className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
                   Bio
