@@ -6,6 +6,8 @@ import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../../lib/context/ThemContext'
 import ProfileEdit from '../../components/profile/ProfileEdit'
 import Error from '../_error'
+import Loading from '../../components/commons/Loding'
+import Layout from '../../components/Layout'
 
 const profileQuery = gql`
   query {
@@ -52,11 +54,15 @@ const profile = () => {
       Router.push('/')
       return null
     }
-    return <Error statusCode={500} />
+    return <Error statusCode={404} />
   }
 
   if (loading) {
-    return <div>loding</div>
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    )
   }
 
   if (profile.username !== username) {
@@ -65,9 +71,11 @@ const profile = () => {
   }
 
   return (
-    <div className={'container'}>
-      <ProfileEdit profileData={profile} className={'w-full'} />
-    </div>
+    <Layout>
+      <div className={'container'}>
+        <ProfileEdit profileData={profile} className={'w-full'} />
+      </div>
+    </Layout>
   )
 }
 

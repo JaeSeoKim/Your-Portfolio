@@ -6,6 +6,7 @@ import LoginButton from './LoginButton'
 import LoggedButton from './LoggedButton'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
+import { GoMarkGithub } from 'react-icons/go'
 
 export const profileQuery = gql`
   query profileQuery {
@@ -16,9 +17,12 @@ export const profileQuery = gql`
   }
 `
 
-const Nav = ({}) => {
+const Nav = ({ nav }) => {
   const { isDarkMode } = useContext(ThemeContext)
   const { data, loading, error } = useQuery(profileQuery)
+
+  const name = nav?.name
+  const subMenu = nav?.subMenu
 
   const profile = data?.profile
 
@@ -34,20 +38,24 @@ const Nav = ({}) => {
             }
       }>
       <div className="container mx-auto navigation flex items-center justify-between flex-wrap p-6">
-        <Link href="/">
-          <a className="flex items-center flex-shrink-0 text-white mr-6">
-            <img
-              src={'https://avatars3.githubusercontent.com/u/48559454?s=60&v=4'}
-              alt="siteIcon"
-              className="fill-current rounded-full h-8 w-8 mr-2"
-              width="54"
-              height="54"
-            />
+        {name ? (
+          <a
+            href={'#Profile'}
+            className="flex items-center flex-shrink-0 text-white mr-6">
             <span className="font-semibold text-xl tracking-tight">
-              Your Portfolio
+              {`${name} - Portfolio`}
             </span>
           </a>
-        </Link>
+        ) : (
+          <Link href={'/'}>
+            <a className="flex items-center flex-shrink-0 text-white mr-6">
+              <span className="font-semibold text-xl tracking-tight">
+                {'Your Portfolio'}
+              </span>
+            </a>
+          </Link>
+        )}
+
         <div className="block lg:hidden">
           <div
             className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-gray-300 hover:text-gray-300"
@@ -67,27 +75,86 @@ const Nav = ({}) => {
           id="navMenuBtn"
           className="hidden w-full block flex-grow mt-auto lg:flex lg:items-center lg:w-auto ">
           <div className="text-sm lg:flex-grow mt-auto">
-            <Link href="/">
-              <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
-                Home
-              </a>
-            </Link>
-            <Link href="/about">
-              <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
-                About
-              </a>
-            </Link>
-          </div>
-          <div>
-            {profile ? (
-              <LoggedButton
-                className={'flex justify-end'}
-                user={profile.username}
-              />
+            {subMenu ? (
+              <>
+                <Link href="/">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                    Home
+                  </a>
+                </Link>
+                <a
+                  href="#Profile"
+                  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                  Profile
+                </a>
+                <a
+                  href="#GitHub Contributions"
+                  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                  GitHub
+                </a>
+                {subMenu.map((menu, index) => (
+                  <a
+                    key={index}
+                    href={`#${menu}`}
+                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                    {menu}
+                  </a>
+                ))}
+              </>
             ) : (
-              <LoginButton className={'flex justify-end'} />
+              <>
+                <Link href="/about">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
+                    About
+                  </a>
+                </Link>
+              </>
             )}
           </div>
+          {name ? (
+            <div>
+              {profile ? (
+                <div
+                  className={
+                    'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none'
+                  }>
+                  <Link href={'/'}>
+                    <a className={'hover:text-gray-300 cursor-pointer'}>
+                      MainPage
+                    </a>
+                  </Link>
+                  <div className={'mx-2 select-none'}>|</div>
+                  <Link href="/api/logout">
+                    <a className={'hover:text-gray-300 cursor-pointer'}>
+                      Logout
+                    </a>
+                  </Link>
+                </div>
+              ) : (
+                <div
+                  className={
+                    'inline-block flex text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0 select-none border border-white hover:border-gray-300'
+                  }>
+                  <Link href={'/'}>
+                    <a className={'hover:text-gray-300 cursor-pointer'}>
+                      Create Your Portfolio
+                    </a>
+                  </Link>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>
+              {profile ? (
+                <LoggedButton
+                  className={'flex justify-end'}
+                  user={profile.username}
+                />
+              ) : (
+                <LoginButton className={'flex justify-end'} />
+              )}
+            </div>
+          )}
         </div>
       </div>
     </nav>

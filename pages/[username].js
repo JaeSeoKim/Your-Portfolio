@@ -6,29 +6,14 @@ import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import Profile from '../components/profile/Profile'
 import { initializeApollo } from '../lib/apollo/client'
+import Loading from '../components/commons/Loding'
+import Layout from '../components/Layout'
 
 const profileQuery = gql`
   query {
     profile {
       id
       username
-      displayName
-      profileUrl
-      avatarUrl
-      email
-      blog
-      bio
-      tag
-      timeLineFeilds {
-        title
-        timeLine {
-          color
-          icon
-          title
-          subtitle
-          value
-        }
-      }
     }
   }
 `
@@ -78,36 +63,46 @@ const profile = ({ username, error: NotFound }) => {
   }
 
   if (loading) {
-    return <div>loading</div>
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    )
   }
-
   return (
-    <div className={'container max-w-screen-lg mx-auto'}>
-      <NextSeo
-        title={`${user.username} - Portfolio`}
-        description={user.bio && user.bio.substring(0, 100).trim() + '...'}
-        openGraph={{
-          title: `${user.username} - Portfolio`,
-          description: user.bio && user.bio.substring(0, 100).trim() + '...',
-          url: 'https://www.example.com/@firstlast123',
-          type: 'profile',
-          profile: {
-            username: user.username
-          },
-          images: [
-            {
-              url: user.avatarUrl,
-              alt: 'Profile Photo'
-            }
-          ]
-        }}
-      />
-      <Profile
-        profileData={user}
-        className={'w-full'}
-        isEdit={profile ? (user.id === profile.id ? true : false) : false}
-      />
-    </div>
+    <Layout
+      nav={{
+        name: user.username,
+        subMenu:
+          user.timeLineFeilds && user.timeLineFeilds.map(value => value.title)
+      }}>
+      <div className={'container max-w-screen-lg mx-auto'}>
+        <NextSeo
+          title={`${user.username} - Portfolio`}
+          description={user.bio && user.bio.substring(0, 100).trim() + '...'}
+          openGraph={{
+            title: `${user.username} - Portfolio`,
+            description: user.bio && user.bio.substring(0, 100).trim() + '...',
+            url: `http://your-portfolio.vercel.app/${user.username}`,
+            type: 'profile',
+            profile: {
+              username: user.username
+            },
+            images: [
+              {
+                url: user.avatarUrl,
+                alt: 'Profile Photo'
+              }
+            ]
+          }}
+        />
+        <Profile
+          profileData={user}
+          className={'w-full'}
+          isEdit={profile ? (user.id === profile.id ? true : false) : false}
+        />
+      </div>
+    </Layout>
   )
 }
 

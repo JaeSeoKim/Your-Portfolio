@@ -8,16 +8,16 @@ const GitContributions = ({ githubId, style, className }) => {
   const { isDarkMode } = useContext(ThemeContext)
 
   const { data: contributionData, error } = useRequest({
-    url: `https://your-portfolio.vercel.app/api/git/${githubId}`
-    // url: `http://127.0.0.1:3000/api/git/${githubId}`
+    // url: `https://your-portfolio.vercel.app/api/git/${githubId}`
+    url: `http://localhost:3000/api/git/${githubId}`
   })
 
   if (error) {
     return (
       <div
         className={`${className} bg-red-100 border-l-4 border-red-500 text-red-700 p-4`}>
-        <p className="font-bold">Error: </p>
-        <p>Can't get github contributions Data</p>
+        <p className="font-bold">Error:</p>
+        <p>{'\t'}Can't get github contributions Data</p>
       </div>
     )
   }

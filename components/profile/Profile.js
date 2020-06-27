@@ -153,8 +153,8 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
         </div>
       </div>
       {profileData.timeLineFeilds &&
-        profileData.timeLineFeilds.map(element => (
-          <div className={'overflow-hidden'}>
+        profileData.timeLineFeilds.map((element, index) => (
+          <div className={'overflow-hidden'} key={index}>
             <div className={isDarkMode ? 'text-white' : 'text-gray-700'}>
               <Anchor tag={element.title} />
             </div>

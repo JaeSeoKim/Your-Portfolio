@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import gql from 'graphql-tag'
-import Router from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import ThemeContext from '../lib/context/ThemContext'
 import ProfileCard from '../components/Home/ProfileCard'
 import { initializeApollo } from '../lib/apollo/client'
 import Dots from '../components/Home/Dots'
+import Layout from '../components/Layout'
 import Error from './_error'
+import Loading from '../components/commons/Loding'
 
 const usersQuery = gql`
   query {
@@ -34,26 +35,32 @@ const home = () => {
   }
 
   if (loading) {
-    return <div>loding</div>
+    return (
+      <Layout>
+        <Loading />
+      </Layout>
+    )
   }
 
   return (
-    <div className={'container'}>
-      Home
-      <div className={'flex justify-centor'}>
-        {users.map && (
-          <Dots className={'w-full lg:w-1/2'}>
-            {users.map((value, index) => (
-              <ProfileCard
-                key={index}
-                data={value}
-                className={'w-full h-full px-2 pb-5'}
-              />
-            ))}
-          </Dots>
-        )}
+    <Layout>
+      <div className={'container'}>
+        Home
+        <div className={'flex justify-centor'}>
+          {users.map && (
+            <Dots className={'w-full lg:w-1/2'}>
+              {users.map((value, index) => (
+                <ProfileCard
+                  key={index}
+                  data={value}
+                  className={'w-full h-full px-2 pb-5'}
+                />
+              ))}
+            </Dots>
+          )}
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 
