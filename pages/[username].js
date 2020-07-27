@@ -87,7 +87,7 @@ const profile = ({ username, error: NotFound }) => {
             title: `${user.username} - Portfolio`,
             description:
               user.bio && removeMd(user.bio).substring(0, 200).trim() + '...',
-            url: `http://your-portfolio.vercel.app/${user.username}`,
+            url: `https://your-portfolio.vercel.app/${user.username}`,
             type: 'profile',
             profile: {
               username: user.username
