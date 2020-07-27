@@ -66,7 +66,9 @@ const Markdown = ({ source, className, style }) => {
           padding: 0.2em 0.4em;
           margin: 0;
           font-size: 85%;
-          background-color: rgb(243, 243, 243);
+          background-color: ${isDarkMode
+            ? 'rgb(80, 80, 80)'
+            : 'rgb(243, 243, 243)'};
           border-radius: 3px;
           margin-bottom: 10px;
         }
