@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import ThemeContext from '../../lib/context/ThemContext'
 import PhotoFrame from './PhotoFrame'
-import Divder from '../commons/Divder'
+import Divider from '../commons/Divider'
 import GitContributions from './GitContributions'
 import Anchor from '../commons/Anchor'
 import { RiFileEditLine } from 'react-icons/ri'
@@ -74,7 +74,7 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
                 {profileData.displayName}
               </h2>
             )}
-            <Divder color />
+            <Divider color />
             <div>
               <div>
                 <a
@@ -138,10 +138,6 @@ const Profile = ({ profileData, style, className, isEdit = false }) => {
           </div>
         </div>
       </div>
-      {/* <GitContributions
-        className={'pt-3 flex justify-center'}
-        githubId={profileData.username}
-      /> */}
       <div
         className={isDarkMode ? 'text-white mx-auto' : 'text-gray-900 mx-auto'}>
         <div>

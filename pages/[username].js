@@ -8,6 +8,7 @@ import Profile from '../components/profile/Profile'
 import { initializeApollo } from '../lib/apollo/client'
 import Loading from '../components/commons/Loding'
 import Layout from '../components/Layout'
+import removeMd from 'remove-markdown'
 
 const profileQuery = gql`
   query {
@@ -79,10 +80,13 @@ const profile = ({ username, error: NotFound }) => {
       <div className={'container max-w-screen-lg mx-auto'}>
         <NextSeo
           title={`${user.username} - Portfolio`}
-          description={user.bio && user.bio.substring(0, 100).trim() + '...'}
+          description={
+            user.bio && removeMd(user.bio).substring(0, 200).trim() + '...'
+          }
           openGraph={{
             title: `${user.username} - Portfolio`,
-            description: user.bio && user.bio.substring(0, 100).trim() + '...',
+            description:
+              user.bio && removeMd(user.bio).substring(0, 200).trim() + '...',
             url: `http://your-portfolio.vercel.app/${user.username}`,
             type: 'profile',
             profile: {

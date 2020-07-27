@@ -36,7 +36,7 @@ const ProfileCard = ({ style, className, href, as, data }) => {
                 className={`text-left mt-4 md:mt-0 ${
                   isDarkMode ? 'text-gray-500' : 'text-gray-700'
                 }`}>
-                {data.bio && removeMd(data.bio).substring(0, 100).trim()}
+                {data.bio && removeMd(data.bio).substring(0, 250).trim()}
                 {'...'}
               </div>
               <div className={'whitespace-pre-wrap'}>

@@ -83,7 +83,7 @@ const GitContributions = ({ githubId, style, className }) => {
                 grade0: '#282a36'
               }
             : {
-                background: 'rgba(0, 0, 0, 0.03)',
+                background: 'transparent',
                 text: '#000',
                 grade4: '#216e39',
                 grade3: '#30a14e',
@@ -103,11 +103,25 @@ const GitContributions = ({ githubId, style, className }) => {
           .react-github-heatmap__meta {
             color: white !important;
           }
+          rect {
+            shape-rendering: geometricPrecision;
+            outline: 1px solid rgba(27, 31, 35, 0.04);
+            outline-offset: -1px;
+            rx: 2;
+            ry: 2;
+          }
         `}</style>
       ) : (
         <style jsx global>{`
           .react-github-heatmap__meta {
             color: black !important;
+          }
+          rect {
+            shape-rendering: geometricPrecision;
+            outline: 1px solid rgba(27, 31, 35, 0.04);
+            outline-offset: -1px;
+            rx: 2;
+            ry: 2;
           }
         `}</style>
       )}

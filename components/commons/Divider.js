@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import ThemeContext from '../../lib/context/ThemContext'
 import { darkModeColor, whiteModeColor } from '../../lib/utils/constans'
 
-const Divder = ({ vertical, color, id, style, className }) => {
+const Divider = ({ vertical, color, id, style, className }) => {
   const { isDarkMode } = useContext(ThemeContext)
   return (
     <div style={style} className={className}>
@@ -45,4 +45,4 @@ const Divder = ({ vertical, color, id, style, className }) => {
   )
 }
 
-export default Divder
+export default Divider

@@ -7,6 +7,7 @@ import LoggedButton from './LoggedButton'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import { GoMarkGithub } from 'react-icons/go'
+import Title from '../Home/TItle'
 
 export const profileQuery = gql`
   query profileQuery {
@@ -17,7 +18,7 @@ export const profileQuery = gql`
   }
 `
 
-const Nav = ({ nav }) => {
+const Nav = ({ nav, index }) => {
   const { isDarkMode } = useContext(ThemeContext)
   const { data, loading, error } = useQuery(profileQuery)
 
@@ -98,7 +99,7 @@ const Nav = ({ nav }) => {
               </>
             ) : (
               <>
-                <Link href="/about">
+                <Link href="#about">
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
                     About
                   </a>
@@ -156,6 +157,7 @@ const Nav = ({ nav }) => {
           )}
         </div>
       </div>
+      {index && <Title user={profile && profile.username} />}
     </nav>
   )
 }

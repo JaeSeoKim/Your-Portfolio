@@ -80,7 +80,7 @@ const TextArea = ({
               : highlightSyntax
               ? 'text-red-400'
               : 'text-gray-700 hover:text-white'
-          } text-xs mr-2 rounded-full shadow-md cursor-pointer`}>
+          } text-xs mr-2 rounded-full shadow cursor-pointer`}>
             <DiCode className={'fill-current h-8 w-8 my-auto'} />
           </div>
         </div>

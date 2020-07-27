@@ -1,6 +1,6 @@
 export default {
   title: 'Your Portfolio',
-  description: 'Share your portfolio~!',
+  description: 'Create & Share your portfolio easily~!',
   openGraph: {
     type: 'website',
     locale: 'ko-KR',

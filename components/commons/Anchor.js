@@ -1,10 +1,10 @@
 import React from 'react'
-import Divder from './Divder'
+import Divider from './Divider'
 
 const Anchor = ({ tag }) => {
   return (
     <React.Fragment>
-      <Divder color id={tag} />
+      <Divider color id={tag} />
       <a href={`#${tag}`}>
         <p className={'inline font-bold text-2xl'}># {tag}</p>
       </a>

@@ -43,27 +43,35 @@ const home = () => {
   }
 
   return (
-    <Layout>
+    <Layout index>
       <div className={'container'}>
-        Home
-        <div className={'flex justify-centor'}>
-          {users.map && (
-            <Dots className={'w-full lg:w-1/2'}>
-              {users.map((value, index) => (
-                <ProfileCard
-                  key={index}
-                  data={value}
-                  className={'w-full h-full px-2 pb-5'}
-                />
-              ))}
-            </Dots>
-          )}
+        <div
+          className={`max-w-5xl mx-auto mt-8 ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+          <div className="w-full p-6">
+            <h3 className="text-3xl font-bold leading-none mb-3">
+              다른 사용자들의 포트폴리오를 구경 해보세요!!
+            </h3>
+            <p className="mb-8">
+              램덤하게 추천되는 포트폴리오 입니다! (검색기능, 좋아요기능을 통한
+              랭킹 시스템 등등 구현 예정)
+            </p>
+          </div>
+          <div className="w-full p-6">
+            {users.map && (
+              <Dots>
+                {users.map((value, index) => (
+                  <ProfileCard key={index} data={value} />
+                ))}
+              </Dots>
+            )}
+          </div>
         </div>
       </div>
     </Layout>
   )
 }
-
 home.getInitialProps = async ctx => {
   const apolloClient = initializeApollo()
 
