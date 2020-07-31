@@ -6,7 +6,6 @@ import LoginButton from './LoginButton'
 import LoggedButton from './LoggedButton'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
-import { GoMarkGithub } from 'react-icons/go'
 import Title from '../Home/TItle'
 
 export const profileQuery = gql`
@@ -99,7 +98,7 @@ const Nav = ({ nav, index }) => {
               </>
             ) : (
               <>
-                <Link href="#about">
+                <Link href="/" as={'/#about'}>
                   <a className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-300 mr-4">
                     About
                   </a>
@@ -121,11 +120,11 @@ const Nav = ({ nav, index }) => {
                       </a>
                     </Link>
                     <div className={'mx-2 select-none'}>|</div>
-                    <Link href="/api/logout">
-                      <a className={'hover:text-gray-300 cursor-pointer'}>
-                        Logout
-                      </a>
-                    </Link>
+                    <a
+                      href="/api/logout"
+                      className={'hover:text-gray-300 cursor-pointer'}>
+                      Logout
+                    </a>
                   </div>
                 </div>
               ) : (

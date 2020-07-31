@@ -43,12 +43,12 @@ const Title = ({ style, className, user }) => {
                   </a>
                 </Link>
               ) : (
-                <Link href="/api/login">
-                  <a className="inline-block flex mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
-                    <GoMarkGithub className={'fill-current my-auto mr-2'} />
-                    Start with GitHub
-                  </a>
-                </Link>
+                <a
+                  href="/api/login"
+                  className="inline-block flex mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
+                  <GoMarkGithub className={'fill-current my-auto mr-2'} />
+                  Start with GitHub
+                </a>
               )}
             </div>
             <div className="w-full md:w-3/5 py-6 text-center">
@@ -841,13 +841,9 @@ const Title = ({ style, className, user }) => {
                       y2="497.17"
                       gradientTransform="translate(-20.24 29.65) rotate(-2.31)"
                       gradientUnits="userSpaceOnUse">
-                      <stop offset="0" stop-color="gray" stop-opacity="0.25" />
-                      <stop
-                        offset="0.54"
-                        stop-color="gray"
-                        stop-opacity="0.12"
-                      />
-                      <stop offset="1" stop-color="gray" stop-opacity="0.1" />
+                      <stop offset="0" stopColor="gray" stopOpacity="0.25" />
+                      <stop offset="0.54" stopColor="gray" stopOpacity="0.12" />
+                      <stop offset="1" stopColor="gray" stopOpacity="0.1" />
                     </linearGradient>
                   </defs>
                   <title>timeline</title>
@@ -887,8 +883,8 @@ const Title = ({ style, className, user }) => {
                     transform="translate(-105.5 -59.28)"
                     fill="none"
                     stroke="#3f3d56"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     d="M541,148.22c-5.73,2-12.85,5.41-17.31,9.12l3.66-9.43-3.22-9.59C528.41,142.23,535.37,146,541,148.22Z"
@@ -900,8 +896,8 @@ const Title = ({ style, className, user }) => {
                     transform="translate(-105.5 -59.28)"
                     fill="none"
                     stroke="#3f3d56"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     d="M424,543.22c-5.95,1.16-13.48,3.57-18.41,6.62l4.93-8.83-1.86-9.94C412.36,535.53,418.73,540.22,424,543.22Z"
@@ -913,8 +909,8 @@ const Title = ({ style, className, user }) => {
                     transform="translate(-105.5 -59.28)"
                     fill="none"
                     stroke="#3f3d56"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     d="M859,367.22c-4.9-3.57-11.79-7.46-17.37-9l9.82-2.39,6-8.13C856.72,353.46,857.62,361.32,859,367.22Z"
